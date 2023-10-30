@@ -1,15 +1,15 @@
 package Base;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class Language {
-    private Map<String,String> lang;
+public final class Language {
+    public static final Map<String,String> langCode = new HashMap<String,String>(){{
+        put("English", "en-us");
+        put("Vietnamese", "vi-vn");
+        put("French", "fr-fr");
+        put("Japanese", "ja-jp");
+        put("Korean", "ko-kr");
+    }};
 
-    public Map<String, String> getLang() {
-        return lang;
-    }
-
-    public void setLang(Map<String, String> lang) {
-        this.lang = lang;
-    }
 }

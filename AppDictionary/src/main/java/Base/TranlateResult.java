@@ -3,14 +3,10 @@ package Base;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TranlateResult {
-    List<String> results=new ArrayList<String>();
+public final class TranlateResult {
+    public static String HelperResult(String result) {
+        String[] tmp=result.split("\"");
 
-    public List<String> getResults() {
-        return results;
-    }
-
-    public void setResults(List<String> results) {
-        this.results = results;
+        return tmp[1];
     }
 }
