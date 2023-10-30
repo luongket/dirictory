@@ -55,6 +55,7 @@ public class TransLateApi {
                // System.out.println(jsonElement);
                 String pretty = gson.toJson(jsonElement);
                 result=pretty;
+
             }catch (Exception e) {
                 System.out.println("error: " + e.getMessage());
             }
@@ -63,7 +64,7 @@ public class TransLateApi {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return TranlateResult.HelperResult(result);
 
     }
 
