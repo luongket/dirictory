@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="560.0" prefWidth="840.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotroller.TranslateController">
    <children>
@@ -26,9 +27,24 @@
                         <Insets bottom="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="500.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asset/volume.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
-            <TextArea fx:id="area1" prefHeight="200.0" prefWidth="200.0" promptText="nhập nội dung tìm kiếm" />
+            <TextArea fx:id="area1" prefHeight="200.0" prefWidth="200.0" promptText="nhập nội dung tìm kiếm">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
          </children>
       </VBox>
       <HBox prefHeight="50.0" prefWidth="300.0" translateX="270.0" translateY="250.0">
@@ -75,12 +91,27 @@
                         <Insets bottom="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="500.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asset/volume.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
             <TextArea fx:id="area2" prefHeight="200.0" prefWidth="200.0" promptText="kết quả tìm kiếm">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
             </TextArea>
          </children>
       </VBox>
