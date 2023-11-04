@@ -7,6 +7,7 @@ module model.testmysql {
     requires mysql.connector.j;
     requires de.jensd.fx.glyphs.fontawesome;
     requires com.jfoenix;
+    requires javafx.web;
 
     opens model.testmysql to javafx.fxml;
     exports model.testmysql;

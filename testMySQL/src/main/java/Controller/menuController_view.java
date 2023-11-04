@@ -11,20 +11,26 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class menuController_view {
 
     @FXML
     private Stage stage;
-    private Scene scene;
-    private Parent root;
     FXMLLoader loader =new FXMLLoader();
 
-    public void switchToScene2(ActionEvent event) throws IOException {
-        root = loader.load(getClass().getResource("table-view.fxml"));
+    public void switchToSceneMyLib(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mylib-view.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToSceneSearch(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("searchView.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

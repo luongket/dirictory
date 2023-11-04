@@ -1,11 +1,7 @@
 package test;
 
-import dao.BookDAO;
-import dao.libarlyDAO;
-import model.testmysql.book;
-import model.testmysql.libraly;
-
-import java.util.ArrayList;
+import dao.vocabularyDAO;
+import model.testmysql.words;
 
 public class testBookDAO {
     public static void main(String[] args) {
@@ -55,6 +51,7 @@ public class testBookDAO {
 //          libraly1.setId(1);
 //          libraly libraly2 = libarlyDAO.getInstance().seclectById(libraly1);
 //          System.out.println(libraly2);
-
+        words words1 = new words(10, "heheh", "hhh", "brum");
+        vocabularyDAO.getInstance().seclectById(words1);
     }
 }
