@@ -1,15 +1,11 @@
-package Base;
-import com.fasterxml.jackson.databind.ObjectMapper;
+package Base.App;
 import com.google.gson.*;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
 public class TransLateApi {
     private String host;
