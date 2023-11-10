@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotroller.mainController">
    <children>
-      <AnchorPane fx:id="mainContent" layoutX="36.0" layoutY="42.0" prefHeight="560.0" prefWidth="840.0" style="-fx-background-color: #000;" />
+      <AnchorPane fx:id="mainContent" layoutX="36.0" layoutY="42.0" prefHeight="560.0" prefWidth="840.0" />
       <AnchorPane prefHeight="40.0" prefWidth="876.0" style="-fx-background-color: #333c26;">
          <children>
             <ImageView fx:id="menu" fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">

@@ -1,20 +1,16 @@
 package Cotroller;
 
-import Base.TransLateApi;
-import Base.Voice;
+import Base.App.TransLateApi;
+import Base.App.Voice;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import Base.Language;
+import Base.App.Language;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +82,7 @@ public class TranslateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         List<String> languages = new ArrayList<String>();
-        for (String tmp : Base.Language.langCode.keySet()){
+        for (String tmp : Language.langCode.keySet()){
             languages.add(tmp);
         }
 
