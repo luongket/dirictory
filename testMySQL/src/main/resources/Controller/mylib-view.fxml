@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -12,7 +11,7 @@
 
 <AnchorPane prefHeight="421.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.mylibControler">
    <children>
-      <TableView fx:id="tableWord" layoutX="17.0" layoutY="106.0" prefHeight="280.0" prefWidth="567.0">
+      <TableView fx:id="tableWord" layoutX="17.0" layoutY="106.0" prefHeight="280.0" prefWidth="567.0" stylesheets="@mylib-style.css">
          <columns>
             <TableColumn fx:id="idCol" prefWidth="35.333343505859375" text="ID" />
             <TableColumn fx:id="wordCol" prefWidth="120.66665649414062" text="Words" />

@@ -12,7 +12,7 @@ import java.util.Objects;
 public class test extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menu.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("question.fxml")));
         Scene scene = new Scene(root);
         stage.setTitle("Hello!");
         stage.setScene(scene);
