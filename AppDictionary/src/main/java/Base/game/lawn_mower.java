@@ -3,10 +3,12 @@ package Base.game;
 import Base.game.Zombie.Basic_Zombie;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.util.List;
 
-public class lawn_mower extends GameElement {
+public class Lawn_mower extends GameElement {
     private int Lane;
     private ImageView image;
     private boolean OnAction=false;
@@ -23,13 +25,16 @@ public class lawn_mower extends GameElement {
     public void setImage(ImageView image) {
         this.image = image;
     }
+    Media explode = new Media(getClass().getResource("/asset/Sound/lawnmower.wav").toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(explode);
 
-    public lawn_mower(int width, int height, int lane, float x, float y) {
+    public Lawn_mower(int width, int height, int lane, float x, float y) {
         super(width, height);
         Lane = lane;
         this.image=new ImageView(new Image("/asset/Game/lawn_mover.gif"));
         image.setFitWidth(width);image.setFitHeight(height);
         image.setLayoutX(x);image.setLayoutY(y);
+        this.setPath("/asset/Game/lawn_mover.gif");
 
     }
 
@@ -58,15 +63,33 @@ public class lawn_mower extends GameElement {
                         (zombie.getImage().getLayoutX()-this.image.getLayoutX())>=-30){
                     if(!this.isOnAction()){
                         this.setOnAction(true);
-                        this.image.setImage(new Image("/asset/Game/lawnMoverAction.gif"));
                     }
                     zombie.setHp(0);
                 }
             }
 
         }
+        UpdateAnimation();
+    }
+    public void UpdateAnimation() {
+        if(this.isOnAction()){
+            String path="/asset/Game/lawnMoverAction.gif";
+            if(!path.equals(this.getPath())){
+                this.image.setImage(new Image("/asset/Game/lawnMoverAction.gif"));
+                this.setPath(path);
+            }
+        }else {
+            String path="/asset/Game/lawn_mover.gif";
+            if(!path.equals(this.getPath())){
+                this.image=new ImageView(new Image("/asset/Game/lawn_mover.gif"));
+                this.setPath(path);
+            }
+        }
     }
     public void move(){
+
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.play();
         if(this.image.getLayoutX()<1000){
             this.image.setLayoutX(this.image.getLayoutX()+1);
         }else {
