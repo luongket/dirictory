@@ -2,6 +2,8 @@ package Base.game.Zombie;
 
 import Base.game.Plant.Plant;
 import Base.game.Plant.Point;
+import Base.game.GameState;
+import Cotroller.gameController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -16,6 +18,16 @@ enum state {
 
 public class Basic_Zombie {
     private float movementSpeed;
+    private String path;
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     private String Name;
     private Point Position;
     private state stateZombie;
@@ -24,9 +36,11 @@ public class Basic_Zombie {
     private float damage;
     private float Width;
     private float Height;
+    private float tmp;
     private ImageView image;
     private int Lane;
     public Boolean collisionPlant=false;
+    public int heat=5;
 
 
     public ImageView getImage() {
@@ -105,6 +119,7 @@ public class Basic_Zombie {
                         float maxHp, float damage,
                         float width, float height, Pane pane) {
         this.movementSpeed = movementSpeed;
+        tmp=movementSpeed;
         Name = name;
         Position = position;
         this.stateZombie = state.Normal;
@@ -114,7 +129,7 @@ public class Basic_Zombie {
         this.Lane=Lane;
         Width = width;
         Height = height;
-        String path="/asset/Game/"+name+".gif";
+        this.path="/asset/Game/Zombie/"+name+".gif";
         image=new ImageView(new Image(path));
         this.image.setLayoutX(position.getPointX());
         this.image.setLayoutY(position.getPointY());
@@ -122,9 +137,7 @@ public class Basic_Zombie {
         pane.getChildren().add(this.image);
     }
 
-    public Boolean IsDie() {
-        return hp == 0;
-    }
+
 
     public int getLane() {
         return Lane;
@@ -136,15 +149,25 @@ public class Basic_Zombie {
 
 
     public void Move(){
-        if(hp>0&&this.getImage().getLayoutX()>100&&!collisionPlant){
+        if(this.heat<0){
+            this.setStateZombie(state.freeze);
+        }
+        if(this.getStateZombie()==state.freeze){
+            this.setMovementSpeed(0.5f);
+        }
+        if(hp>0&&this.getImage().getLayoutX()>80&&!collisionPlant){
             this.getImage().setLayoutX(this.getImage().getLayoutX()-this.getMovementSpeed());
+
+        }else if(this.getImage().getLayoutX()<=80){
+            gameController.state= GameState.lostGame;
         }
     }
     public Boolean eatPlant(Plant plant){
         if(plant.Lane==this.getLane()){
-            if(Math.abs(plant.getCenter().getPointX()-this.getImage().getLayoutX())<5){
+            if((this.getImage().getLayoutX()-plant.getCenter().getPointX())<-15
+                    &&(this.getImage().getLayoutX()-plant.getCenter().getPointX())>-50){
+                System.out.println((this.getImage().getLayoutX()-plant.getCenter().getPointX()));
                 plant.setHp(plant.getHp()-this.getDamage());
-                System.out.println("eatPlant");
                 return true;
 
             }
@@ -154,6 +177,30 @@ public class Basic_Zombie {
         return false;
 
     }
+    public void UpdateAnimation(){
+        String path="/asset/Game/Zombie/"+this.getName()+"Attack"+".gif";
+        String move="/asset/Game/Zombie/"+this.getName()+".gif";
+        if(this.collisionPlant&&!path.equals(this.path)){
+            this.getImage().setImage(new Image(path));
+            this.path=path;
+            System.out.println(this.path);
+        }else if(!this.collisionPlant&&!move.equals(this.path)){
+            this.path=move;
+            this.getImage().setImage(new Image(move));
+        }
+    }
+    public void ZombieNotMove(){
+        Thread zombieThread=new Thread(() -> {
+            this.setMovementSpeed(0);
+            try {
+                Thread.sleep(10000); // Tạm dừng luồng này trong 2 giây
+                // Code tiếp theo sau khi tạm dừng
+                this.setMovementSpeed(this.tmp);
 
-
+            } catch (InterruptedException e) {
+                // Xử lý ngoại lệ nếu cần
+            }
+        });
+        zombieThread.start();
+    }
 }

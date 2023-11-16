@@ -31,14 +31,14 @@ public class Card {
         this.price = price;
     }
 
-    private Plantform plantform;
+    private PlantSeed plantform;
 
     public Card() {
     }
 
     public Card(String namePlant, float hp,
                 float damge, float speed, String path,
-                float price, String bulletname, Plantform plantform) {
+                float price, String bulletname, PlantSeed plantform) {
         this.namePlant = namePlant;
         this.hp = hp;
         this.price=price;
@@ -94,7 +94,7 @@ public class Card {
         this.speed = speed;
     }
 
-    public Plantform getPlantform() {
+    public PlantSeed getPlantform() {
         return plantform;
     }
 

@@ -1,11 +1,14 @@
 package Base.game.Plant;
 
+import Base.game.Bullet.Bullet;
 import Base.game.Zombie.Basic_Zombie;
 
-public class pea extends Plant {
+import java.util.List;
+
+public class Pea extends Plant {
     public Bullet bullet;
 
-    public pea(int width, int height, Point center,
+    public Pea(int width, int height, Point center,
                double hp, String name, int lane, Bullet bulletNew) {
         super(width, height, center, 50, hp, name,lane);
         bullet=bulletNew;
@@ -13,41 +16,45 @@ public class pea extends Plant {
 
     }
 
-    public Bullet getBullet() {
-        return bullet;
-    }
 
-    @Override
-    public void ActionPlant(Basic_Zombie zombie){
-        bullet.getImage().setLayoutX(bullet.getImage().getLayoutX() +bullet.getSpeed());
-        if(bullet.getImage().getLayoutX()>900){
-            bullet.getImage().setLayoutX(0);
+    public boolean CanAction(List<Basic_Zombie> zombies){
+        for(Basic_Zombie zombie : zombies){
+            if(zombie.getLane()==this.Lane&&zombie.getImage().getLayoutX()>this.getImg().getLayoutX()+150){
+                return true;
+            }
         }
-        if(bullet.getPosition().getPointX()>bullet.getImage().getLayoutX()){
-            bullet.falg=false;
-        }else {
-            bullet.falg=true;
-
-        }
-        bullet.getImage().setVisible(bullet.falg);
-        bullet.Collision(zombie);
+        return false;
     }
     @Override
-    public void Reset(){
-        if((this.getCenter().getPointX()-bullet.getImage().getLayoutX())<=5
-                &&(this.getCenter().getPointX()-bullet.getImage().getLayoutX())>=1){
-            bullet.reset();
+    public void ActionPlant(List<Basic_Zombie> zombies){
+        if(CanAction(zombies)){
+            bullet.getImage().setLayoutX(bullet.getImage().getLayoutX() +bullet.getSpeed());
+            if(bullet.getImage().getLayoutX()>900){
+                bullet.getImage().setLayoutX(0);
+            }
+            if(bullet.getPosition().getPointX()>bullet.getImage().getLayoutX()){
+                bullet.falg=false;
+            }else {
+                bullet.falg=true;
+
+            }
+            bullet.getImage().setVisible(bullet.falg);
+            for (int i=0; i<zombies.size(); i++) {
+                bullet.Collision(zombies.get(i));
+                System.out.println("ok");
+            }
         }
-        bullet.getImage().setLayoutX(bullet.getImage().getLayoutX() +bullet.getSpeed());
-        if(bullet.getImage().getLayoutX()>900){
-            bullet.getImage().setLayoutX(0);
-        }
-        if(bullet.getPosition().getPointX()>bullet.getImage().getLayoutX()){
+        else {
             bullet.falg=false;
-        }else {
-            bullet.falg=true;
+            bullet.getImage().setVisible(bullet.falg);
 
         }
-        bullet.getImage().setVisible(bullet.falg);
+
+
+    }
+    @Override
+    public void Reset() {
+        super.Reset();
+        this.bullet.getImage().setVisible(false);
     }
 }
