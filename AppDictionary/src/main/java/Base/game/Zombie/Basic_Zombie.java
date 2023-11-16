@@ -3,7 +3,7 @@ package Base.game.Zombie;
 import Base.game.Plant.Plant;
 import Base.game.Plant.Point;
 import Base.game.GameState;
-import Cotroller.gameController;
+import Controller.gameController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;

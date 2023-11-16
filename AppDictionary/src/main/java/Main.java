@@ -14,6 +14,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, 876, 600);
         stage.setTitle("Dirictory");
         stage.setScene(scene);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("CSS.css")).toExternalForm());
         stage.show();
     }
     public static void main(String[] args) {

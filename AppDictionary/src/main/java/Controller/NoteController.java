@@ -1,5 +1,6 @@
 package Controller;
 
+import Base.Item;
 import Base.Word;
 import database.DictionaryManagement;
 import javafx.fxml.FXML;
@@ -144,7 +145,7 @@ public class NoteController implements Initializable {
     private void Search() {
         String searchContent = searchField.getText().toLowerCase();
         listView.getItems().clear();
-        int i = binarySearch(savedList, searchContent);
+        int i = Item.binarySearch(savedList, searchContent);
         if (i != -1) {
             listView.getItems().add(savedList.get(i).getWord());
             displayDefinition(searchContent);
@@ -161,7 +162,7 @@ public class NoteController implements Initializable {
             DictionaryManagement.delete("dictionary.saveword", selectedWord);
             int selectedId = listView.getSelectionModel().getSelectedIndex();
             int newSelectedId = (selectedId == listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
-            int i = binarySearch(savedList, selectedWord);
+            int i = Item.binarySearch(savedList, selectedWord);
             savedList.remove(i);
             listView.getItems().remove(selectedId);
             listView.getSelectionModel().select(newSelectedId);
@@ -184,7 +185,7 @@ public class NoteController implements Initializable {
         String descriptionEdited = editArea.getText().toLowerCase().trim();
         if (!descriptionEdited.equals("")) {
             String selectedWord = listView.getSelectionModel().getSelectedItem();
-            int i = binarySearch(savedList, selectedWord);
+            int i = Item.binarySearch(savedList, selectedWord);
             Word word = savedList.get(i);
             word.setDefinition("<html> " + descriptionEdited + " <html>");
             DictionaryManagement.update(word);
@@ -207,7 +208,7 @@ public class NoteController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Nhập chưa đủ dữ liệu!");
             alert.showAndWait();
-        } else if (binarySearch(savedList, engWord) != -1) {
+        } else if (Item.binarySearch(savedList, engWord) != -1) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Từ này đã tồn tại!");
@@ -215,53 +216,12 @@ public class NoteController implements Initializable {
         } else {
             Word word = new Word(engWord, defWord);
             savedList.add(word);
-            sort(savedList, 0, savedList.size() - 1);
+            Item.sort(savedList, 0, savedList.size() - 1);
             DictionaryManagement.insert("dictionary.saveword", word);
             updateListView();
             addWord.setVisible(false);
             eng.clear();
             def.clear();
-        }
-    }
-
-
-    private int binarySearch(ArrayList<Word> arr, String key) {
-        int low = 0;
-        int high = arr.size() - 1;
-        while (high >= low) {
-            int mid = (low + high) / 2;
-            if (arr.get(mid).getWord().equals(key)) {
-                return mid;
-            } else {
-                if (arr.get(mid).getWord().compareTo(key) > 0) {
-                    high = mid - 1;
-                } else {
-                    low = mid + 1;
-                }
-            }
-        }
-        return -1;
-    }
-
-    private int partition(ArrayList<Word> arr, int low, int high) {
-        Word pivot = arr.get(high);
-        int i = (low - 1);
-        for (int j = low; j < high; j++) {
-            if (arr.get(j).getWord().compareTo(pivot.getWord()) < 0) {
-                i++;
-                Collections.swap(arr, i, j);
-            }
-        }
-
-        Collections.swap(arr, i + 1, high);
-        return i + 1;
-    }
-
-    private void sort(ArrayList<Word> arr, int low, int high) {
-        if (low < high) {
-            int pi = partition(arr, low, high);
-            sort(arr, low, pi - 1);
-            sort(arr, pi + 1, high);
         }
     }
 }

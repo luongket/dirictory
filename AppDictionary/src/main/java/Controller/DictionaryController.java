@@ -1,6 +1,7 @@
 package Controller;
 
 
+import Base.Item;
 import Base.Word;
 import database.DictionaryManagement;
 import javafx.fxml.FXML;
@@ -85,23 +86,23 @@ public class DictionaryController implements Initializable {
             displayDefinition(selectedWord);
             note.setText("");
             note.setVisible(true);
-            int k = binarySearch(savedList, selectedWord);
+            int k = Item.binarySearch(savedList, selectedWord);
             if (k == -1) {
                 note.setText("Note");
             } else {
                 note.setText("Noted");
             }
             note.setOnMouseClicked(e -> {
-                int i = binarySearch(savedList, selectedWord);
+                int i = Item.binarySearch(savedList, selectedWord);
                 if (i == -1) {
-                    int j = binarySearch(wordList, selectedWord);
+                    int j = Item.binarySearch(wordList, selectedWord);
                     Word word = wordList.get(j);
                     DictionaryManagement.insert("dictionary.saveword", word);
                     savedList.add(word);
-                    sort(savedList, 0, savedList.size() - 1);
+                    Item.sort(savedList, 0, savedList.size() - 1);
                     note.setText("Noted");
                 } else {
-                    int j = binarySearch(savedList, selectedWord);
+                    int j = Item.binarySearch(savedList, selectedWord);
                     DictionaryManagement.delete("dictionary.saveword", selectedWord);
                     savedList.remove(j);
                     note.setText("Note");
@@ -174,7 +175,7 @@ public class DictionaryController implements Initializable {
     private void Search() {
         String searchContent = searchField.getText().toLowerCase();
         listView.getItems().clear();
-        int i = binarySearch(wordList, searchContent);
+        int i = Item.binarySearch(wordList, searchContent);
         if (i != -1) {
             listView.getItems().add(wordList.get(i).getWord());
             displayDefinition(searchContent);
@@ -191,7 +192,7 @@ public class DictionaryController implements Initializable {
             DictionaryManagement.delete("dictionary.dictionary", selectedWord);
             int selectedId = listView.getSelectionModel().getSelectedIndex();
             int newSelectedId = (selectedId == listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
-            int i = binarySearch(wordList, selectedWord);
+            int i = Item.binarySearch(wordList, selectedWord);
             wordList.remove(i);
             listView.getItems().remove(selectedId);
             listView.getSelectionModel().select(newSelectedId);
@@ -214,7 +215,7 @@ public class DictionaryController implements Initializable {
         String descriptionEdited = editArea.getText().toLowerCase().trim();
         if (!descriptionEdited.equals("")) {
             String selectedWord = listView.getSelectionModel().getSelectedItem();
-            int i = binarySearch(wordList, selectedWord);
+            int i = Item.binarySearch(wordList, selectedWord);
             Word word = wordList.get(i);
             word.setDefinition("<html> " + descriptionEdited + " <html>");
             DictionaryManagement.update(word);
@@ -237,7 +238,7 @@ public class DictionaryController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Nhập chưa đủ dữ liệu!");
             alert.showAndWait();
-        } else if (binarySearch(wordList, engWord) != -1) {
+        } else if (Item.binarySearch(wordList, engWord) != -1) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Từ này đã tồn tại!");
@@ -245,7 +246,7 @@ public class DictionaryController implements Initializable {
         } else {
             Word word = new Word(engWord, defWord);
             wordList.add(word);
-            sort(wordList, 0, wordList.size() - 1);
+            Item.sort(wordList, 0, wordList.size() - 1);
             DictionaryManagement.insert("dictionary.dictionary", word);
             addWord.setVisible(false);
             eng.clear();
@@ -253,43 +254,4 @@ public class DictionaryController implements Initializable {
         }
     }
 
-    private int binarySearch(ArrayList<Word> arr, String key) {
-        int low = 0;
-        int high = arr.size() - 1;
-        while (high >= low) {
-            int mid = (low + high) / 2;
-            if (arr.get(mid).getWord().equals(key)) {
-                return mid;
-            } else {
-                if (arr.get(mid).getWord().compareTo(key) > 0) {
-                    high = mid - 1;
-                } else {
-                    low = mid + 1;
-                }
-            }
-        }
-        return -1;
-    }
-
-    private int partition(ArrayList<Word> arr, int low, int high) {
-        Word pivot = arr.get(high);
-        int i = (low - 1);
-        for (int j = low; j < high; j++) {
-            if (arr.get(j).getWord().compareTo(pivot.getWord()) < 0) {
-                i++;
-                Collections.swap(arr, i, j);
-            }
-        }
-
-        Collections.swap(arr, i + 1, high);
-        return i + 1;
-    }
-
-    private void sort(ArrayList<Word> arr, int low, int high) {
-        if (low < high) {
-            int pi = partition(arr, low, high);
-            sort(arr, low, pi - 1);
-            sort(arr, pi + 1, high);
-        }
-    }
 }

@@ -27,7 +27,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="36.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <ImageView fx:id="home" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="home" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                      <image>
                         <Image url="@../asset/home.png" />
                      </image>
@@ -35,7 +35,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fx:id="dictionary" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="dictionary" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                      <image>
                         <Image url="@../asset/dictionary.png" />
                      </image>
@@ -43,7 +43,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fx:id="stadiaController" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="stadiaController" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                      <image>
                         <Image url="@../asset/game.png" />
                      </image>
@@ -51,7 +51,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fx:id="note" fitHeight="36.0" fitWidth="36.0" layoutX="10.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="note" fitHeight="36.0" fitWidth="36.0" layoutX="10.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                      <image>
                         <Image url="@../asset/dictionary.png" />
                      </image>
