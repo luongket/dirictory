@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Language" prefHeight="560.0" prefWidth="840.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotroller.TranslateController">
+<AnchorPane fx:id="Language" prefHeight="560.0" prefWidth="840.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
    <children>
       <VBox prefHeight="200.0" prefWidth="780.0" style="-fx-background-color: #FFFDDD;" translateX="30.0" translateY="30.0">
          <children>
