@@ -15,25 +15,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.VBox?>
+
 <AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gameController">
-=======
 
-
-
-
-<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotronller.gameController">
-
-
->>>>>>> e0de715b17cbb20175f5ad304cadeeef7e08d507
-=======
-<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gameController">
->>>>>>> main
    <children>
       <ImageView fx:id="imageView" fitHeight="560.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -149,15 +138,10 @@
                   </ImageView>
                </graphic>
             </Button>
-<<<<<<< HEAD
-             <VBox layoutY="360.0" prefHeight="200.0" prefWidth="840.0" >
-                 <children>
-                     <HBox prefHeight="29.0" prefWidth="820.0" styleClass="But" >
-=======
+
              <VBox fx:id="questionBox" layoutY="360.0" prefHeight="200.0" prefWidth="840.0">
                  <children>
                      <HBox prefHeight="29.0" prefWidth="820.0" styleClass="But">
->>>>>>> main
                          <children>
                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Question" />
                              <Label fx:id="lblQuestion" text="Label" />
@@ -170,11 +154,8 @@
                      </RadioButton>
                      <RadioButton fx:id="rdoB" mnemonicParsing="false" text="B" toggleGroup="$Choice" />
                      <RadioButton fx:id="rdoC" mnemonicParsing="false" text="C" toggleGroup="$Choice" />
-<<<<<<< HEAD
-                     <HBox prefHeight="47.0" prefWidth="840.0" styleClass="But" >
-=======
                      <HBox prefHeight="47.0" prefWidth="840.0" styleClass="But">
->>>>>>> main
+
                          <children>
                              <Button mnemonicParsing="false" onAction="#checkYourAnswer" styleClass="checkYourAnswer" text="Check You Answer" />
                              <Button mnemonicParsing="false" onAction="#nextAnswer" styleClass="checkYourAnswer" text="Next Answer" />
