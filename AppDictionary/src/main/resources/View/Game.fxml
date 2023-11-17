@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-
-
-<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotronller.gameController">
-
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gameController">
    <children>
       <ImageView fx:id="imageView" fitHeight="560.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -131,6 +131,30 @@
                   </ImageView>
                </graphic>
             </Button>
+             <VBox layoutY="360.0" prefHeight="200.0" prefWidth="840.0" >
+                 <children>
+                     <HBox prefHeight="29.0" prefWidth="820.0" styleClass="But" >
+                         <children>
+                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Question" />
+                             <Label fx:id="lblQuestion" text="Label" />
+                         </children>
+                     </HBox>
+                     <RadioButton fx:id="rdoA" mnemonicParsing="false" text="A">
+                         <toggleGroup>
+                             <ToggleGroup fx:id="Choice" />
+                         </toggleGroup>
+                     </RadioButton>
+                     <RadioButton fx:id="rdoB" mnemonicParsing="false" text="B" toggleGroup="$Choice" />
+                     <RadioButton fx:id="rdoC" mnemonicParsing="false" text="C" toggleGroup="$Choice" />
+                     <HBox prefHeight="47.0" prefWidth="840.0" styleClass="But" >
+                         <children>
+                             <Button mnemonicParsing="false" onAction="#checkYourAnswer" styleClass="checkYourAnswer" text="Check You Answer" />
+                             <Button mnemonicParsing="false" onAction="#nextAnswer" styleClass="checkYourAnswer" text="Next Answer" />
+                         </children>
+                     </HBox>
+                 </children>
+             </VBox>
+
          </children>
       </AnchorPane>
       <AnchorPane fx:id="EndPane" prefHeight="560.0" prefWidth="840.0" visible="false">
