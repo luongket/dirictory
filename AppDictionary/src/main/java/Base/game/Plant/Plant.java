@@ -2,7 +2,7 @@ package Base.game.Plant;
 
 import Base.game.GameElement;
 import Base.game.Zombie.Basic_Zombie;
-import Cotroller.gameController;
+import Controller.gameController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;

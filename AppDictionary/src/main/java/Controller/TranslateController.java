@@ -1,4 +1,4 @@
-package Cotroller;
+package Controller;
 
 import Base.App.TransLateApi;
 import Base.App.Voice;

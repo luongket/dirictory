@@ -3,18 +3,11 @@ package Base.game.Zombie;
 import Base.game.Plant.Plant;
 import Base.game.Plant.Point;
 import Base.game.GameState;
-import Cotroller.gameController;
+import Controller.gameController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-
-enum state {
-    poisoned,
-    freeze,
-    Normal,
-    burn;
-}
 
 public class Basic_Zombie {
     private float movementSpeed;
@@ -155,10 +148,11 @@ public class Basic_Zombie {
         if(this.getStateZombie()==state.freeze){
             this.setMovementSpeed(0.5f);
         }
-        if(hp>0&&this.getImage().getLayoutX()>80&&!collisionPlant){
+        if(hp>0&&this.getImage().getLayoutX()>70&&!collisionPlant){
             this.getImage().setLayoutX(this.getImage().getLayoutX()-this.getMovementSpeed());
 
-        }else if(this.getImage().getLayoutX()<=80){
+        }
+        if(this.getImage().getLayoutX()<=80){
             gameController.state= GameState.lostGame;
         }
     }
@@ -178,15 +172,28 @@ public class Basic_Zombie {
 
     }
     public void UpdateAnimation(){
-        String path="/asset/Game/Zombie/"+this.getName()+"Attack"+".gif";
-        String move="/asset/Game/Zombie/"+this.getName()+".gif";
-        if(this.collisionPlant&&!path.equals(this.path)){
-            this.getImage().setImage(new Image(path));
-            this.path=path;
-            System.out.println(this.path);
-        }else if(!this.collisionPlant&&!move.equals(this.path)){
-            this.path=move;
-            this.getImage().setImage(new Image(move));
+        if(stateZombie==state.Normal){
+            String path="/asset/Game/Zombie/"+this.getName()+"Attack"+".gif";
+            String move="/asset/Game/Zombie/"+this.getName()+".gif";
+            if(this.collisionPlant&&!path.equals(this.path)){
+                this.getImage().setImage(new Image(path));
+                this.path=path;
+                System.out.println(this.path);
+            }else if(!this.collisionPlant&&!move.equals(this.path)){
+                this.path=move;
+                this.getImage().setImage(new Image(move));
+            }
+        }else if(stateZombie==state.freeze){
+            String path="/asset/Game/Zombie/"+this.getName()+"AttackFreeze"+".gif";
+            String move="/asset/Game/Zombie/"+this.getName()+"Freeze.gif";
+            if(this.collisionPlant&&!path.equals(this.path)){
+                this.getImage().setImage(new Image(path));
+                this.path=path;
+                System.out.println(this.path);
+            }else if(!this.collisionPlant&&!move.equals(this.path)){
+                this.path=move;
+                this.getImage().setImage(new Image(move));
+            }
         }
     }
     public void ZombieNotMove(){
@@ -202,5 +209,22 @@ public class Basic_Zombie {
             }
         });
         zombieThread.start();
+    }
+    public void ZomDie(){
+        if(stateZombie==state.burn){
+            Thread myThread = new Thread(() -> {
+                    try {
+                        this.getImage().setImage(new Image("/asset/Game/Zombie/Boomdie.gif"));
+                        Thread.sleep(2000);
+                        this.getImage().setVisible(false);
+                    }catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+            });
+            myThread.start();
+        }else {
+            this.getImage().setVisible(false);
+
+        }
     }
 }

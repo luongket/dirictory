@@ -1,6 +1,7 @@
 package Base.game.Plant;
 
 import Base.game.Zombie.Basic_Zombie;
+import Base.game.Zombie.state;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -39,7 +40,9 @@ public class Chilli extends Plant{
                 for (Basic_Zombie zombie : zombies){
                     if(this.Lane==zombie.getLane()){
                         zombie.setHp(zombie.getHp()-20);
-
+                        if(zombie.getHp()==0){
+                            zombie.setStateZombie(state.burn);
+                        }
                     }
                 }
                 this.setHp(0);

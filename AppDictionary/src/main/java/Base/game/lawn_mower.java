@@ -57,6 +57,7 @@ public class Lawn_mower extends GameElement {
         if(this.isOnAction()){
             move();
         }
+        UpdateAnimation();
         for(Basic_Zombie zombie : zombies){
             if(zombie.getLane()==this.getLane()){
                 if((zombie.getImage().getLayoutX()-this.image.getLayoutX())<=0&&
@@ -69,7 +70,7 @@ public class Lawn_mower extends GameElement {
             }
 
         }
-        UpdateAnimation();
+
     }
     public void UpdateAnimation() {
         if(this.isOnAction()){
@@ -78,10 +79,11 @@ public class Lawn_mower extends GameElement {
                 this.image.setImage(new Image("/asset/Game/lawnMoverAction.gif"));
                 this.setPath(path);
             }
+
         }else {
             String path="/asset/Game/lawn_mover.gif";
             if(!path.equals(this.getPath())){
-                this.image=new ImageView(new Image("/asset/Game/lawn_mover.gif"));
+                this.image.setImage(new Image("/asset/Game/lawn_mover.gif"));
                 this.setPath(path);
             }
         }

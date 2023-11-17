@@ -1,4 +1,4 @@
-package Cotroller;
+package Controller;
 
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
