@@ -28,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -45,11 +46,17 @@ public class gameController implements Initializable {
     @FXML
     private AnchorPane GameRoot;
     @FXML
+<<<<<<< HEAD
 
     private AnchorPane EndPane;
 
+=======
+    private AnchorPane EndPane;
+>>>>>>> main
     @FXML
     private GridPane lawn_grid;
+    @FXML
+    private VBox questionBox;
     private static int level = 8;
     public static int Sun = 250;
     public static boolean Shovel=false;
@@ -71,7 +78,7 @@ public class gameController implements Initializable {
     @FXML
     private Label SunLabel;
     public static int val;
-    public static boolean UpdateSun = false;
+    public static boolean UpdateSun = true;
     public static List<Plant> listPlant = new ArrayList<Plant>();
     public static List<SpikeRock> spike = new ArrayList<SpikeRock>();
     public static List<Basic_Zombie> ZombieList = Collections.synchronizedList(new ArrayList<Basic_Zombie>());
@@ -317,9 +324,13 @@ public class gameController implements Initializable {
 
 
     public void RemoveZombie(Basic_Zombie zombie) {
+<<<<<<< HEAD
 
         zombie.ZomDie();
 
+=======
+        zombie.ZomDie();
+>>>>>>> main
         ZombieList.remove(zombie);
     }
 
@@ -386,7 +397,10 @@ public class gameController implements Initializable {
         SpawnZombie();
         showSun();
         GameEnd();
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     }));
     Timeline UpdateLawnMover = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
         for (int i = 0; i < lawnMovers.size(); i++) {
@@ -417,8 +431,13 @@ public class gameController implements Initializable {
         }
     }
     public void Replay(){
+<<<<<<< HEAD
 
         EndPane.setVisible(false);
+=======
+        EndPane.setVisible(false);
+        questionBox.setVisible(true);
+>>>>>>> main
         GameRoot.setVisible(true);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
         imageView.setFitWidth(840);
@@ -441,10 +460,13 @@ public class gameController implements Initializable {
 
     }
     public void pause() {
+<<<<<<< HEAD
+=======
+        questionBox.setVisible(false);
+>>>>>>> main
         if (combinedTransition != null) {
             combinedTransition.stop();
         }
-
         for (int i=0;i<ZombieList.size();i++) {
             ZombieList.get(i).getImage().setVisible(false);
         }
@@ -461,7 +483,10 @@ public class gameController implements Initializable {
         }
         spike.clear();
         BoxPlant.getChildren().clear();
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     }
     public void GamePlay() {
         showSun();
@@ -476,7 +501,10 @@ public class gameController implements Initializable {
         updateZombie.setCycleCount(Animation.INDEFINITE);
         UpdateLevel.setCycleCount(Animation.INDEFINITE);
         combinedTransition = new ParallelTransition(
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
                 updateZombie,
                 updatePlant,
                 UpdateLawnMover,
@@ -485,14 +513,20 @@ public class gameController implements Initializable {
         );
         ShowData();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> main
         try {
             questions = QuestionLoader.loadQuestions("src/main/resources/asset/question.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
+<<<<<<< HEAD
 =======
 
 >>>>>>> e0de715b17cbb20175f5ad304cadeeef7e08d507
+=======
+>>>>>>> main
         GameRoot.setVisible(true);
         BoxPlant.setViewOrder(-1);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
@@ -504,13 +538,21 @@ public class gameController implements Initializable {
     }
 
     public void GameEnd() {
-
         if(state==GameState.playGame){
             return;
         }
         pause();
         if(state==GameState.lostGame){
 
+<<<<<<< HEAD
+        if(state==GameState.playGame){
+            return;
+        }
+        pause();
+        if(state==GameState.lostGame){
+
+=======
+>>>>>>> main
             imageView.setImage(new Image("/asset/Game/GameOver.jpg"));
             imageView.setFitWidth(1000);
             imageView.setFitHeight(700);
@@ -518,7 +560,10 @@ public class gameController implements Initializable {
             imageView.setImage(new Image("/asset/Game/WinGame.jpg"));
         }
         EndPane.setVisible(true);
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     }
 
     public void GameStart() {
@@ -569,6 +614,10 @@ public class gameController implements Initializable {
 
         if (selectedAnswer.equals(currentQuestion.getCorrectAnswer())) {
             UpdateSunCount(50);
+<<<<<<< HEAD
+=======
+            UpdateSun=true;
+>>>>>>> main
             showSun();
             nextAnswer(event);
         } else {
