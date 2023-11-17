@@ -1,9 +1,14 @@
-package Base;
+package Base.App;
+
+import database.DictionaryManagement;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Item {
+    private static ArrayList<Word> wordList = DictionaryManagement.getInstance().selectAll("dictionary.dictionary");
+    private static ArrayList<Word> savedList = DictionaryManagement.getInstance().selectAll("dictionary.saveword");
+
     public static int binarySearch(ArrayList<Word> arr, String key) {
         int low = 0;
         int high = arr.size() - 1;
@@ -42,5 +47,13 @@ public class Item {
             sort(arr, low, pi - 1);
             sort(arr, pi + 1, high);
         }
+    }
+
+    public static ArrayList<Word> getWordList(){
+        return wordList;
+    }
+
+    public static ArrayList<Word> getSavedList(){
+        return savedList;
     }
 }

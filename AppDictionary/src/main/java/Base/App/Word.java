@@ -1,4 +1,4 @@
-package Base;
+package Base.App;
 
 public class Word {
     private String word;

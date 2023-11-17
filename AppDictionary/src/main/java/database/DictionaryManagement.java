@@ -1,7 +1,7 @@
 package database;
 
 
-import Base.Word;
+import Base.App.Word;
 
 import java.sql.*;
 import java.util.ArrayList;

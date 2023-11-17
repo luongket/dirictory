@@ -1,8 +1,8 @@
 package Controller;
 
 
-import Base.Item;
-import Base.Word;
+import Base.App.Item;
+import Base.App.Word;
 import database.DictionaryManagement;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,10 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class DictionaryController implements Initializable {
@@ -70,9 +68,8 @@ public class DictionaryController implements Initializable {
     @FXML
     private Button note;
 
-    private ArrayList<Word> wordList = DictionaryManagement.getInstance().selectAll("dictionary.dictionary");
-    private ArrayList<Word> savedList = DictionaryManagement.getInstance().selectAll("dictionary.saveword");
-
+    private ArrayList<Word> wordList = Item.getWordList();
+    private ArrayList<Word> savedList = Item.getSavedList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         editTab.setVisible(false);
