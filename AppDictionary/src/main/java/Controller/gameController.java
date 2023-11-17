@@ -46,13 +46,7 @@ public class gameController implements Initializable {
     @FXML
     private AnchorPane GameRoot;
     @FXML
-<<<<<<< HEAD
-
     private AnchorPane EndPane;
-
-=======
-    private AnchorPane EndPane;
->>>>>>> main
     @FXML
     private GridPane lawn_grid;
     @FXML
@@ -324,13 +318,7 @@ public class gameController implements Initializable {
 
 
     public void RemoveZombie(Basic_Zombie zombie) {
-<<<<<<< HEAD
-
         zombie.ZomDie();
-
-=======
-        zombie.ZomDie();
->>>>>>> main
         ZombieList.remove(zombie);
     }
 
@@ -397,10 +385,6 @@ public class gameController implements Initializable {
         SpawnZombie();
         showSun();
         GameEnd();
-<<<<<<< HEAD
-
-=======
->>>>>>> main
     }));
     Timeline UpdateLawnMover = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
         for (int i = 0; i < lawnMovers.size(); i++) {
@@ -431,13 +415,8 @@ public class gameController implements Initializable {
         }
     }
     public void Replay(){
-<<<<<<< HEAD
-
-        EndPane.setVisible(false);
-=======
         EndPane.setVisible(false);
         questionBox.setVisible(true);
->>>>>>> main
         GameRoot.setVisible(true);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
         imageView.setFitWidth(840);
@@ -460,10 +439,7 @@ public class gameController implements Initializable {
 
     }
     public void pause() {
-<<<<<<< HEAD
-=======
         questionBox.setVisible(false);
->>>>>>> main
         if (combinedTransition != null) {
             combinedTransition.stop();
         }
@@ -483,10 +459,6 @@ public class gameController implements Initializable {
         }
         spike.clear();
         BoxPlant.getChildren().clear();
-<<<<<<< HEAD
-
-=======
->>>>>>> main
     }
     public void GamePlay() {
         showSun();
@@ -501,10 +473,6 @@ public class gameController implements Initializable {
         updateZombie.setCycleCount(Animation.INDEFINITE);
         UpdateLevel.setCycleCount(Animation.INDEFINITE);
         combinedTransition = new ParallelTransition(
-<<<<<<< HEAD
-
-=======
->>>>>>> main
                 updateZombie,
                 updatePlant,
                 UpdateLawnMover,
@@ -512,21 +480,11 @@ public class gameController implements Initializable {
                 UpdateLevel
         );
         ShowData();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> main
         try {
             questions = QuestionLoader.loadQuestions("src/main/resources/asset/question.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> e0de715b17cbb20175f5ad304cadeeef7e08d507
-=======
->>>>>>> main
         GameRoot.setVisible(true);
         BoxPlant.setViewOrder(-1);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
@@ -544,15 +502,6 @@ public class gameController implements Initializable {
         pause();
         if(state==GameState.lostGame){
 
-<<<<<<< HEAD
-        if(state==GameState.playGame){
-            return;
-        }
-        pause();
-        if(state==GameState.lostGame){
-
-=======
->>>>>>> main
             imageView.setImage(new Image("/asset/Game/GameOver.jpg"));
             imageView.setFitWidth(1000);
             imageView.setFitHeight(700);
@@ -560,10 +509,6 @@ public class gameController implements Initializable {
             imageView.setImage(new Image("/asset/Game/WinGame.jpg"));
         }
         EndPane.setVisible(true);
-<<<<<<< HEAD
-
-=======
->>>>>>> main
     }
 
     public void GameStart() {
@@ -614,10 +559,7 @@ public class gameController implements Initializable {
 
         if (selectedAnswer.equals(currentQuestion.getCorrectAnswer())) {
             UpdateSunCount(50);
-<<<<<<< HEAD
-=======
             UpdateSun=true;
->>>>>>> main
             showSun();
             nextAnswer(event);
         } else {
