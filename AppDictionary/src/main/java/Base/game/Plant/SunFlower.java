@@ -14,5 +14,9 @@ public class SunFlower extends Plant{
     public void ActionPlant(){
         sunrise.moveSun();
     }
-
+    @Override
+    public void Reset(){
+        super.Reset();
+        sunrise.getImg().setVisible(false);
+    }
 }

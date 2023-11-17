@@ -1,6 +1,7 @@
 package Base.game.Plant;
 
 import Base.game.Zombie.Basic_Zombie;
+import Base.game.Zombie.state;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -30,6 +31,7 @@ public class DroomShroom extends Plant {
                                 (zombie1.getImage().getLayoutX() - this.getCenter().getPointX()) > -50) {
 
                             zombie1.setHp(0);
+                            zombie1.setStateZombie(state.burn);
 
                         }
                     }

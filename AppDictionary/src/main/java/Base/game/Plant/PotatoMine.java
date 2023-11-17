@@ -1,6 +1,7 @@
 package Base.game.Plant;
 
 import Base.game.Zombie.Basic_Zombie;
+import Base.game.Zombie.state;
 import javafx.scene.image.Image;
 
 import javafx.scene.media.Media;
@@ -27,6 +28,7 @@ public class PotatoMine extends Plant{
                     // Code tiếp theo sau khi tạm dừng
                     this.setHp(0);
 
+
                 } catch (InterruptedException e) {
                     // Xử lý ngoại lệ nếu cần
                 }
@@ -42,8 +44,11 @@ public class PotatoMine extends Plant{
                     this.getImg().setLayoutY(center.getPointY());
                     this.setPath(path);
                 }
-                yourThread.start();
-                zombie.setHp(zombie.getHp()-20);
+                    yourThread.start();
+                    zombie.setHp(zombie.getHp()-20);
+                    if(zombie.getHp()==0){
+                        zombie.setStateZombie(state.burn);
+                    }
                 }
             }
         }

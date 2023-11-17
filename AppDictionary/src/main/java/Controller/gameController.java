@@ -1,5 +1,7 @@
 package Controller;
 
+import Base.game.Question;
+import Base.game.QuestionLoader;
 import Base.game.Bullet.Bullet;
 import Base.game.Bullet.IceBullet;
 import Base.game.GameState;
@@ -13,16 +15,20 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.ParallelTransition;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -40,9 +46,17 @@ public class gameController implements Initializable {
     @FXML
     private AnchorPane GameRoot;
     @FXML
-    private AnchorPane StartPane;
+<<<<<<< HEAD
+
+    private AnchorPane EndPane;
+
+=======
+    private AnchorPane EndPane;
+>>>>>>> main
     @FXML
     private GridPane lawn_grid;
+    @FXML
+    private VBox questionBox;
     private static int level = 8;
     public static int Sun = 250;
     public static boolean Shovel=false;
@@ -64,13 +78,38 @@ public class gameController implements Initializable {
     @FXML
     private Label SunLabel;
     public static int val;
-    public static boolean UpdateSun = false;
+    public static boolean UpdateSun = true;
     public static List<Plant> listPlant = new ArrayList<Plant>();
     public static List<SpikeRock> spike = new ArrayList<SpikeRock>();
     public static List<Basic_Zombie> ZombieList = Collections.synchronizedList(new ArrayList<Basic_Zombie>());
     public static List<Lawn_mower> lawnMovers = new ArrayList<Lawn_mower>();
     public static List<Card> plantIterm = new ArrayList<Card>();
     public DataZombie zombie = new DataZombie();
+
+    /**
+     * ket.
+     */
+    @FXML
+    private ToggleGroup Choice;
+
+    @FXML
+    private Label lblQuestion;
+
+    @FXML
+    private RadioButton rdoA;
+
+    @FXML
+    private RadioButton rdoB;
+
+    @FXML
+    private RadioButton rdoC;
+
+    private List<Question> questions;
+    private int currentQuestionIndex = 0;
+
+
+
+
     public void ShowData() {
         PausePane.setVisible(true);
         PausePane.setViewOrder(-2);
@@ -285,7 +324,13 @@ public class gameController implements Initializable {
 
 
     public void RemoveZombie(Basic_Zombie zombie) {
-        zombie.getImage().setVisible(false);
+<<<<<<< HEAD
+
+        zombie.ZomDie();
+
+=======
+        zombie.ZomDie();
+>>>>>>> main
         ZombieList.remove(zombie);
     }
 
@@ -351,6 +396,11 @@ public class gameController implements Initializable {
     Timeline UpdateLevel = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
         SpawnZombie();
         showSun();
+        GameEnd();
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
     }));
     Timeline UpdateLawnMover = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
         for (int i = 0; i < lawnMovers.size(); i++) {
@@ -381,12 +431,42 @@ public class gameController implements Initializable {
         }
     }
     public void Replay(){
+<<<<<<< HEAD
+
+        EndPane.setVisible(false);
+=======
+        EndPane.setVisible(false);
+        questionBox.setVisible(true);
+>>>>>>> main
+        GameRoot.setVisible(true);
+        imageView.setImage(new Image("/asset/Game/Lawn.png"));
+        imageView.setFitWidth(840);
+        imageView.setFitHeight(400);
+        state=GameState.playGame;
+
         Sun=150;
         level=0;
+
+        for (int i = 0; i <lawnMovers.size(); i++) {
+            lawnMovers.get(i).getImage().setLayoutX(100);
+            lawnMovers.get(i).setOnAction(false);
+            lawnMovers.get(i).UpdateAnimation();
+
+        }
+
+        PausePane.setVisible(true);
+        // Bắt đầu lại ParallelTransition
+        combinedTransition.play();
+
+    }
+    public void pause() {
+<<<<<<< HEAD
+=======
+        questionBox.setVisible(false);
+>>>>>>> main
         if (combinedTransition != null) {
             combinedTransition.stop();
         }
-
         for (int i=0;i<ZombieList.size();i++) {
             ZombieList.get(i).getImage().setVisible(false);
         }
@@ -397,19 +477,16 @@ public class gameController implements Initializable {
         listPlant.clear();
         plantIterm.clear();
         System.out.println(plantIterm.size() );
-        for (int i = 0; i <lawnMovers.size(); i++) {
-            lawnMovers.get(i).setOnAction(false);
-            lawnMovers.get(i).getImage().setLayoutX(100);
-        }
+
         for (int i=0;i<spike.size();i++) {
             spike.get(i).getImg().setVisible(false);
         }
         spike.clear();
         BoxPlant.getChildren().clear();
-        PausePane.setVisible(true);
-        // Bắt đầu lại ParallelTransition
-        combinedTransition.playFromStart();
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     }
     public void GamePlay() {
         showSun();
@@ -424,14 +501,32 @@ public class gameController implements Initializable {
         updateZombie.setCycleCount(Animation.INDEFINITE);
         UpdateLevel.setCycleCount(Animation.INDEFINITE);
         combinedTransition = new ParallelTransition(
-                UpdateLevel,
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
                 updateZombie,
                 updatePlant,
                 UpdateLawnMover,
-                UpdateSpike
+                UpdateSpike,
+                UpdateLevel
         );
         ShowData();
-        StartPane.setVisible(false);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> main
+        try {
+            questions = QuestionLoader.loadQuestions("src/main/resources/asset/question.txt");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e0de715b17cbb20175f5ad304cadeeef7e08d507
+=======
+>>>>>>> main
         GameRoot.setVisible(true);
         BoxPlant.setViewOrder(-1);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
@@ -443,7 +538,32 @@ public class gameController implements Initializable {
     }
 
     public void GameEnd() {
+        if(state==GameState.playGame){
+            return;
+        }
+        pause();
+        if(state==GameState.lostGame){
 
+<<<<<<< HEAD
+        if(state==GameState.playGame){
+            return;
+        }
+        pause();
+        if(state==GameState.lostGame){
+
+=======
+>>>>>>> main
+            imageView.setImage(new Image("/asset/Game/GameOver.jpg"));
+            imageView.setFitWidth(1000);
+            imageView.setFitHeight(700);
+        } else if (state==GameState.winGame) {
+            imageView.setImage(new Image("/asset/Game/WinGame.jpg"));
+        }
+        EndPane.setVisible(true);
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
     }
 
     public void GameStart() {
@@ -471,6 +591,7 @@ public class gameController implements Initializable {
                 imageView.setImage(new Image("/asset/Game/cg18.png"));
                 imageView.setOnMouseClicked(event->{
                     GamePlay();
+                    showQuestion();
                 });
 
             } catch (InterruptedException e) {
@@ -480,5 +601,54 @@ public class gameController implements Initializable {
 
         game.start();
 
+    }
+
+    /**
+     * ket.
+     */
+    @FXML
+    void checkYourAnswer(ActionEvent event) {
+        Question currentQuestion = questions.get(currentQuestionIndex);
+        RadioButton selectedRadioButton = (RadioButton) Choice.getSelectedToggle();
+        String selectedAnswer = selectedRadioButton.getText();
+
+        if (selectedAnswer.equals(currentQuestion.getCorrectAnswer())) {
+            UpdateSunCount(50);
+<<<<<<< HEAD
+=======
+            UpdateSun=true;
+>>>>>>> main
+            showSun();
+            nextAnswer(event);
+        } else {
+            System.out.println("Incorrect!");
+            nextAnswer(event);
+        }
+    }
+
+    @FXML
+    void nextAnswer(ActionEvent event) {
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questions.size()) {
+            showQuestion();
+        } else {
+            System.out.println("End of questions.");
+        }
+    }
+    private void showQuestion() {
+        Question currentQuestion = questions.get(currentQuestionIndex);
+
+        lblQuestion.setText(currentQuestion.getQuestion());
+
+        List<String> choices = currentQuestion.getChoices();
+
+        if (choices != null && choices.size() >= 3) {
+            rdoA.setText(choices.get(0));
+            rdoB.setText(choices.get(1));
+            rdoC.setText(choices.get(2));
+        } else {
+            System.err.println("Error: Choices list does not have enough elements.");
+        }
     }
 }
