@@ -45,7 +45,9 @@ public class gameController implements Initializable {
     @FXML
     private AnchorPane GameRoot;
     @FXML
+
     private AnchorPane EndPane;
+
     @FXML
     private GridPane lawn_grid;
     private static int level = 8;
@@ -315,7 +317,9 @@ public class gameController implements Initializable {
 
 
     public void RemoveZombie(Basic_Zombie zombie) {
+
         zombie.ZomDie();
+
         ZombieList.remove(zombie);
     }
 
@@ -382,6 +386,7 @@ public class gameController implements Initializable {
         SpawnZombie();
         showSun();
         GameEnd();
+
     }));
     Timeline UpdateLawnMover = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
         for (int i = 0; i < lawnMovers.size(); i++) {
@@ -412,6 +417,7 @@ public class gameController implements Initializable {
         }
     }
     public void Replay(){
+
         EndPane.setVisible(false);
         GameRoot.setVisible(true);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
@@ -438,6 +444,7 @@ public class gameController implements Initializable {
         if (combinedTransition != null) {
             combinedTransition.stop();
         }
+
         for (int i=0;i<ZombieList.size();i++) {
             ZombieList.get(i).getImage().setVisible(false);
         }
@@ -454,6 +461,7 @@ public class gameController implements Initializable {
         }
         spike.clear();
         BoxPlant.getChildren().clear();
+
     }
     public void GamePlay() {
         showSun();
@@ -468,6 +476,7 @@ public class gameController implements Initializable {
         updateZombie.setCycleCount(Animation.INDEFINITE);
         UpdateLevel.setCycleCount(Animation.INDEFINITE);
         combinedTransition = new ParallelTransition(
+
                 updateZombie,
                 updatePlant,
                 UpdateLawnMover,
@@ -475,11 +484,15 @@ public class gameController implements Initializable {
                 UpdateLevel
         );
         ShowData();
+<<<<<<< HEAD
         try {
             questions = QuestionLoader.loadQuestions("src/main/resources/asset/question.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
+=======
+
+>>>>>>> e0de715b17cbb20175f5ad304cadeeef7e08d507
         GameRoot.setVisible(true);
         BoxPlant.setViewOrder(-1);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
@@ -491,6 +504,7 @@ public class gameController implements Initializable {
     }
 
     public void GameEnd() {
+
         if(state==GameState.playGame){
             return;
         }
@@ -504,6 +518,7 @@ public class gameController implements Initializable {
             imageView.setImage(new Image("/asset/Game/WinGame.jpg"));
         }
         EndPane.setVisible(true);
+
     }
 
     public void GameStart() {

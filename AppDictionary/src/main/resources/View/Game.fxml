@@ -11,11 +11,21 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<<<<<<< HEAD
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.VBox?>
 <AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gameController">
+=======
+
+
+
+
+<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotronller.gameController">
+
+
+>>>>>>> e0de715b17cbb20175f5ad304cadeeef7e08d507
    <children>
       <ImageView fx:id="imageView" fitHeight="560.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
          <image>

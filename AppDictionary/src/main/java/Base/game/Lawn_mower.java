@@ -80,10 +80,12 @@ public class Lawn_mower extends GameElement {
                 this.setPath(path);
             }
 
+
         }else {
             String path="/asset/Game/lawn_mover.gif";
             if(!path.equals(this.getPath())){
                 this.image.setImage(new Image("/asset/Game/lawn_mover.gif"));
+
                 this.setPath(path);
             }
         }
