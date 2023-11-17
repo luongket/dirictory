@@ -11,11 +11,13 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<<<<<<< HEAD
-<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotroller.gameController">
-=======
-<AnchorPane fx:id="GameRoot" prefHeight="540.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gameController">
->>>>>>> 5512e3afda1f66cf1871836575459925154e89f1
+
+
+
+
+<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotronller.gameController">
+
+
    <children>
       <ImageView fx:id="imageView" fitHeight="560.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -122,7 +124,6 @@
             </ImageView>
             <HBox fx:id="BoxPlant" layoutX="40.0" prefHeight="45.0" prefWidth="240.0" />
             <Label fx:id="SunLabel" alignment="CENTER" layoutX="10.0" layoutY="25.0" prefHeight="20.0" prefWidth="20.0" text="0" textAlignment="CENTER" />
-            <Button layoutX="746.0" layoutY="10.0" mnemonicParsing="false" onAction="#Replay" text="REPLAY" />
             <Button layoutX="283.0" layoutY="-1.0" mnemonicParsing="false" onAction="#ShovelClick" prefHeight="46.0" prefWidth="43.0">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
@@ -134,9 +135,9 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="StartPane" prefHeight="560.0" prefWidth="840.0" visible="false">
+      <AnchorPane fx:id="EndPane" prefHeight="560.0" prefWidth="840.0" visible="false">
          <children>
-            <Button layoutX="320.0" layoutY="471.0" mnemonicParsing="false" onAction="#GamePlay" prefHeight="90.0" prefWidth="200.0">
+            <Button layoutX="320.0" layoutY="471.0" mnemonicParsing="false" onAction="#Replay" prefHeight="90.0" prefWidth="200.0">
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>

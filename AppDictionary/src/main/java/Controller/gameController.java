@@ -40,7 +40,9 @@ public class gameController implements Initializable {
     @FXML
     private AnchorPane GameRoot;
     @FXML
-    private AnchorPane StartPane;
+
+    private AnchorPane EndPane;
+
     @FXML
     private GridPane lawn_grid;
     private static int level = 8;
@@ -285,7 +287,9 @@ public class gameController implements Initializable {
 
 
     public void RemoveZombie(Basic_Zombie zombie) {
-        zombie.getImage().setVisible(false);
+
+        zombie.ZomDie();
+
         ZombieList.remove(zombie);
     }
 
@@ -351,6 +355,8 @@ public class gameController implements Initializable {
     Timeline UpdateLevel = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
         SpawnZombie();
         showSun();
+        GameEnd();
+
     }));
     Timeline UpdateLawnMover = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
         for (int i = 0; i < lawnMovers.size(); i++) {
@@ -381,8 +387,30 @@ public class gameController implements Initializable {
         }
     }
     public void Replay(){
+
+        EndPane.setVisible(false);
+        GameRoot.setVisible(true);
+        imageView.setImage(new Image("/asset/Game/Lawn.png"));
+        imageView.setFitWidth(840);
+        imageView.setFitHeight(400);
+        state=GameState.playGame;
+
         Sun=150;
         level=0;
+
+        for (int i = 0; i <lawnMovers.size(); i++) {
+            lawnMovers.get(i).getImage().setLayoutX(100);
+            lawnMovers.get(i).setOnAction(false);
+            lawnMovers.get(i).UpdateAnimation();
+
+        }
+
+        PausePane.setVisible(true);
+        // Bắt đầu lại ParallelTransition
+        combinedTransition.play();
+
+    }
+    public void pause() {
         if (combinedTransition != null) {
             combinedTransition.stop();
         }
@@ -397,18 +425,12 @@ public class gameController implements Initializable {
         listPlant.clear();
         plantIterm.clear();
         System.out.println(plantIterm.size() );
-        for (int i = 0; i <lawnMovers.size(); i++) {
-            lawnMovers.get(i).setOnAction(false);
-            lawnMovers.get(i).getImage().setLayoutX(100);
-        }
+
         for (int i=0;i<spike.size();i++) {
             spike.get(i).getImg().setVisible(false);
         }
         spike.clear();
         BoxPlant.getChildren().clear();
-        PausePane.setVisible(true);
-        // Bắt đầu lại ParallelTransition
-        combinedTransition.playFromStart();
 
     }
     public void GamePlay() {
@@ -424,14 +446,15 @@ public class gameController implements Initializable {
         updateZombie.setCycleCount(Animation.INDEFINITE);
         UpdateLevel.setCycleCount(Animation.INDEFINITE);
         combinedTransition = new ParallelTransition(
-                UpdateLevel,
+
                 updateZombie,
                 updatePlant,
                 UpdateLawnMover,
-                UpdateSpike
+                UpdateSpike,
+                UpdateLevel
         );
         ShowData();
-        StartPane.setVisible(false);
+
         GameRoot.setVisible(true);
         BoxPlant.setViewOrder(-1);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
@@ -443,6 +466,20 @@ public class gameController implements Initializable {
     }
 
     public void GameEnd() {
+
+        if(state==GameState.playGame){
+            return;
+        }
+        pause();
+        if(state==GameState.lostGame){
+
+            imageView.setImage(new Image("/asset/Game/GameOver.jpg"));
+            imageView.setFitWidth(1000);
+            imageView.setFitHeight(700);
+        } else if (state==GameState.winGame) {
+            imageView.setImage(new Image("/asset/Game/WinGame.jpg"));
+        }
+        EndPane.setVisible(true);
 
     }
 
