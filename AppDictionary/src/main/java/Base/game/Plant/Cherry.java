@@ -1,6 +1,7 @@
 package Base.game.Plant;
 
 import Base.game.Zombie.Basic_Zombie;
+import Base.game.Zombie.state;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -37,8 +38,8 @@ public class Cherry extends Plant{
                     if(((zombie.getImage().getLayoutX()-this.getCenter().getPointX())<=-15)&&
                             (zombie.getImage().getLayoutX()-this.getCenter().getPointX())>-50&&
                             (this.Lane==zombie.getLane()||this.Lane==zombie.getLane()+1||this.Lane==zombie.getLane()-1)){
-                            zombie.setHp(0);
-
+                        zombie.setHp(0);
+                        zombie.setStateZombie(state.burn);
                     }
                 }
                 this.setHp(0);
