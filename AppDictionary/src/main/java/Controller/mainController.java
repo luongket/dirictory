@@ -23,6 +23,9 @@ public class mainController implements Initializable {
     private ImageView stadiaController;
 
     @FXML
+    private ImageView note;
+
+    @FXML
     private AnchorPane mainContent;
 
     @FXML
@@ -35,7 +38,7 @@ public class mainController implements Initializable {
 
     private void setMainContent(String path) {
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource(path));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             AnchorPane component = (AnchorPane) loader.load();
             mainContent.getChildren().clear();
             mainContent.getChildren().add(component);
@@ -78,6 +81,9 @@ public class mainController implements Initializable {
         home.setOnMouseClicked(event -> {
             showHome();
         });
+        note.setOnMouseClicked(event -> {
+            showNoteView();
+        });
     }
 
     @FXML
@@ -95,4 +101,8 @@ public class mainController implements Initializable {
         setMainContent("/View/translateView.fxml");
     }
 
+    @FXML
+    public void showNoteView() {
+        setMainContent("/View/Note.fxml");
+    }
 }

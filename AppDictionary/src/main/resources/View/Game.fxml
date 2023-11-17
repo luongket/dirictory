@@ -11,7 +11,11 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gameController">
+
+
+
+<AnchorPane prefHeight="560.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cotronller.gameController">
+
    <children>
       <ImageView fx:id="imageView" fitHeight="560.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
          <image>

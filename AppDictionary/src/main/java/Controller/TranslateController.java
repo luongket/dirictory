@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class TranslateController implements Initializable {
     String languageFrom = "en-us";
     String languageTo = "vi-vn";
-    Voice intance=new Voice();
+    Voice intance = new Voice();
     @FXML
     private ComboBox BoxLanguageFrom;
     @FXML
@@ -35,41 +35,44 @@ public class TranslateController implements Initializable {
     @FXML
     private TextArea area2;
 
-    private  TransLateApi translateApi=new TransLateApi();
+    private TransLateApi translateApi = new TransLateApi();
+
     @FXML
-    void translate()  {
+    void translate() {
         if (!Objects.equals(area1.getText(), "")) {
 
             area2.setText(translateApi.translate(languageFrom, languageTo, area1.getText()));
-        }else {
+        } else {
             System.out.println("ko co tu dich");
         }
     }
 
     @FXML
-    void playArea1(){
-        intance.Speak(area1.getText(),languageFrom);
-    }
-    @FXML
-    void playArea2(){
-
-        intance.Speak(area2.getText(),languageTo);
+    void playArea1() {
+        intance.Speak(area1.getText(), languageFrom);
     }
 
     @FXML
-    private void SellectLangFrom(){
-        languageFrom= Language.langCode.get(BoxLanguageFrom.getValue());
-        From.setText((String)BoxLanguageFrom.getValue());
-    }
-    @FXML
-    private void SellectLangTo(){
-        languageTo= Language.langCode.get(BoxLanguageTo.getValue());
-        To.setText((String)BoxLanguageTo.getValue());
+    void playArea2() {
+
+        intance.Speak(area2.getText(), languageTo);
     }
 
     @FXML
-    private void Swap(){
-        String tmp=(String) BoxLanguageTo.getValue();
+    private void SellectLangFrom() {
+        languageFrom = Language.langCode.get(BoxLanguageFrom.getValue());
+        From.setText((String) BoxLanguageFrom.getValue());
+    }
+
+    @FXML
+    private void SellectLangTo() {
+        languageTo = Language.langCode.get(BoxLanguageTo.getValue());
+        To.setText((String) BoxLanguageTo.getValue());
+    }
+
+    @FXML
+    private void Swap() {
+        String tmp = (String) BoxLanguageTo.getValue();
         BoxLanguageTo.setValue(BoxLanguageFrom.getValue());
         BoxLanguageFrom.setValue(tmp);
         SellectLangFrom();
@@ -82,7 +85,7 @@ public class TranslateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         List<String> languages = new ArrayList<String>();
-        for (String tmp : Language.langCode.keySet()){
+        for (String tmp : Language.langCode.keySet()) {
             languages.add(tmp);
         }
 

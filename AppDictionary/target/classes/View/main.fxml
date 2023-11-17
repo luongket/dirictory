@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
+<<<<<<< HEAD:AppDictionary/target/classes/View/mainGui.fxml
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.mainController">
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.mainController">
+>>>>>>> 676331fd892c0f29b824ed70587ce737faa8e77a:AppDictionary/target/classes/View/main.fxml
    <children>
       <AnchorPane fx:id="mainContent" layoutX="36.0" layoutY="42.0" prefHeight="560.0" prefWidth="840.0" />
       <AnchorPane prefHeight="40.0" prefWidth="876.0" style="-fx-background-color: #333c26;">
@@ -23,7 +31,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="36.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <ImageView fx:id="home" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="home" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                      <image>
                         <Image url="@../asset/home.png" />
                      </image>
@@ -31,7 +39,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fx:id="dictionary" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="dictionary" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                      <image>
                         <Image url="@../asset/dictionary.png" />
                      </image>
@@ -39,9 +47,17 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fx:id="stadiaController" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="stadiaController" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                      <image>
                         <Image url="@../asset/game.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="note" fitHeight="36.0" fitWidth="36.0" layoutX="10.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+                     <image>
+                        <Image url="@../asset/dictionary.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="10.0" />
