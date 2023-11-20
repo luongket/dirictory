@@ -15,9 +15,9 @@ public class Main extends Application {
     private ArrayList<Word> savedList = Item.getSavedList();
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load((getClass().getResource("View/mainGui.fxml")));
-        Scene scene = new Scene(root, 876, 600);
-        stage.setTitle("Hello!");
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("/View/LoginView.fxml"))));
+        Scene scene = new Scene(root);
+        stage.setTitle("Dirictory");
         stage.setScene(scene);
         stage.show();
     }
