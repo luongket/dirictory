@@ -55,9 +55,7 @@ public class DictionaryManagement {
 
     public ArrayList<Word> selectAll(String tabaleName) {
         ArrayList<Word> wordList = new ArrayList<>();
-
         try {
-            // Tạo truy vấn SQL để lấy tất cả bản ghi từ bảng dictionary
             String query = "SELECT * FROM " + tabaleName + " ORDER BY word";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);

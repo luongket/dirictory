@@ -4,12 +4,18 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class mainController implements Initializable {
@@ -20,7 +26,16 @@ public class mainController implements Initializable {
     private ImageView home;
 
     @FXML
+    private Label name;
+
+    @FXML
+    private Button signOut;
+
+    @FXML
     private ImageView stadiaController;
+
+    @FXML
+    private ImageView note;
 
     @FXML
     private AnchorPane mainContent;
@@ -35,14 +50,13 @@ public class mainController implements Initializable {
 
     private void setMainContent(String path) {
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource(path));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             AnchorPane component = (AnchorPane) loader.load();
             mainContent.getChildren().clear();
             mainContent.getChildren().add(component);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -67,7 +81,6 @@ public class mainController implements Initializable {
             anim.play();
         });
 
-
         stadiaController.setOnMouseClicked(event -> {
             showGameView();
         });
@@ -78,21 +91,47 @@ public class mainController implements Initializable {
         home.setOnMouseClicked(event -> {
             showHome();
         });
+        note.setOnMouseClicked(event -> {
+            showNoteView();
+        });
+        signOut.setOnMouseClicked(event -> {
+            logOut();
+        });
     }
 
     @FXML
-    public void showGameView() {
+    private void showGameView() {
         setMainContent("/View/Game.fxml");
     }
 
     @FXML
-    public void showDictionary() {
+    private void showDictionary() {
         setMainContent("/View/Dictionary.fxml");
     }
 
     @FXML
-    public void showHome() {
+    private void showHome() {
         setMainContent("/View/translateView.fxml");
     }
 
+    @FXML
+    private void showNoteView() {
+        setMainContent("/View/Note.fxml");
+    }
+
+    private void logOut() {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/LoginView.fxml")));
+            Stage stage = (Stage) signOut.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void change(String s){
+        name.setText(s);
+    }
 }

@@ -182,7 +182,7 @@ public class NoteController implements Initializable {
 
     private void Save() {
         String descriptionEdited = editArea.getText().toLowerCase().trim();
-        if (!descriptionEdited.equals("")) {
+        if (!descriptionEdited.isEmpty()) {
             String selectedWord = listView.getSelectionModel().getSelectedItem();
             int i = Item.binarySearch(savedList, selectedWord);
             Word word = savedList.get(i);
@@ -202,7 +202,7 @@ public class NoteController implements Initializable {
     private void Confirm() {
         String engWord = eng.getText().toLowerCase().trim();
         String defWord = "<html> " + def.getText().toLowerCase().trim() + " <html>";
-        if (engWord.equals("") || defWord.equals("<html>  <html>")) {
+        if (engWord.isEmpty() || defWord.equals("<html>  <html>")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Nhập chưa đủ dữ liệu!");

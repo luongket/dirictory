@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
@@ -21,7 +22,7 @@ public class DictionaryController implements Initializable {
     private TextField searchField;
 
     @FXML
-    private AnchorPane addWord;
+    private BorderPane addWord;
 
     @FXML
     private TextArea def;
