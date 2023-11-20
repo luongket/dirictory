@@ -42,10 +42,11 @@ public class Chilli extends Plant{
                         zombie.setHp(zombie.getHp()-20);
                         if(zombie.getHp()==0){
                             zombie.setStateZombie(state.burn);
+
                         }
                     }
                 }
-                this.setHp(0);
+                this.hp=0;
             } catch (InterruptedException e) {
                 // Xử lý ngoại lệ nếu cần
             }

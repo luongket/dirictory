@@ -82,7 +82,7 @@ public class Plant extends GameElement {
                 this.Reset();
                 this.setHp(0);
                 gameController.Shovel=false;
-                gameController.Sun+=this.getPrice();
+                gameController.UpdateSunCount(this.getPrice());
             }
         });
         pane.add(img, col, row);

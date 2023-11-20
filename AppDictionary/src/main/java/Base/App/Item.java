@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Item {
-    private static ArrayList<Word> wordList = DictionaryManagement.getInstance().selectAll("dictionary.dictionary");
-    private static ArrayList<Word> savedList = DictionaryManagement.getInstance().selectAll("dictionary.saveword");
+    private static ArrayList<Word> wordList = DictionaryManagement.getInstance().selectAll("libraly.dictionary");
+    private static ArrayList<Word> savedList = DictionaryManagement.getInstance().selectAll("libraly.saveword");
 
     public static int binarySearch(ArrayList<Word> arr, String key) {
         int low = 0;

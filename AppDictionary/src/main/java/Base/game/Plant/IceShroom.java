@@ -1,6 +1,7 @@
 package Base.game.Plant;
 
 import Base.game.Zombie.Basic_Zombie;
+import Base.game.Zombie.state;
 import javafx.scene.image.Image;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class IceShroom extends Plant{
                     this.setPath(path);
                 }
                 for (Basic_Zombie zombie1 : zombies){
+                    zombie1.setStateZombie(state.freeze);
                     zombie1.ZombieNotMove();
                 }
                 Thread.sleep(600); // Tạm dừng luồng này trong 2 giây

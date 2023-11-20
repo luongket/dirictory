@@ -141,7 +141,7 @@ public class gameController implements Initializable {
         Shovel=true;
         val=-1;
     }
-    public static void UpdateSunCount(int value) {
+    public static void UpdateSunCount(double value) {
         Sun += value;
         UpdateSun=true;
     }
@@ -174,24 +174,18 @@ public class gameController implements Initializable {
                 break;
             case cactus:
                 Bullet bullet1 = new Bullet(iterm.getDamge(), iterm.getSpeed(), row + 1, GameRoot, center, iterm.getBulletname(), 20, 20);
-                Cactus cactus = new Cactus(50, 50, center, iterm.getHp(), iterm.getNamePlant(), row + 1, bullet1);
+                Cactus cactus = new Cactus(40, 40, center, iterm.getHp(), iterm.getNamePlant(), row + 1, bullet1);
                 cactus.makeImage(lawn_grid, col, row);
                 listPlant.add(cactus);
                 break;
             case ThreePeater:
-                ThreePeater threePeater = new ThreePeater(50, 50, center,
+                ThreePeater threePeater = new ThreePeater(40, 40, center,
                         iterm.getPrice(), iterm.getHp(), iterm.getNamePlant(),
                         row + 1, iterm.getDamge(), iterm.getSpeed(), GameRoot, iterm.getBulletname());
                 threePeater.makeImage(lawn_grid, col, row);
                 listPlant.add(threePeater);
                 break;
-            case GatlingPea:
-                GatlingPea gatlingPea = new GatlingPea(50, 50, center,
-                        iterm.getPrice(), iterm.getHp(), iterm.getNamePlant(),
-                        row + 1, iterm.getDamge(), iterm.getSpeed(), GameRoot, iterm.getBulletname());
-                gatlingPea.makeImage(lawn_grid, col, row);
-                listPlant.add(gatlingPea);
-                break;
+
             case IcePea:
                 IceBullet iceBullet = new IceBullet(iterm.getDamge(), iterm.getSpeed(), row + 1, GameRoot, center, iterm.getBulletname(), 20, 20);
                 IcePea icePea = new IcePea(40, 40, center, iterm.getHp(), iterm.getNamePlant(), row + 1, iceBullet);
@@ -234,7 +228,7 @@ public class gameController implements Initializable {
                 listPlant.add(iceShroom);
                 break;
             case Squash:
-                Squash squash = new Squash(60, 60, center, iterm.getPrice(), iterm.getHp(), iterm.getNamePlant(), row + 1);
+                Squash squash = new Squash(40, 40, center, iterm.getPrice(), iterm.getHp(), iterm.getNamePlant(), row + 1);
                 squash.makeImage(lawn_grid, col, row);
                 listPlant.add(squash);
                 break;
@@ -570,7 +564,8 @@ public class gameController implements Initializable {
 
     @FXML
     void nextAnswer(ActionEvent event) {
-        currentQuestionIndex++;
+        Random random = new Random();
+        currentQuestionIndex = random.nextInt(14);
 
         if (currentQuestionIndex < questions.size()) {
             showQuestion();

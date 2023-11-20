@@ -33,7 +33,7 @@ public class Basic_Zombie {
     private ImageView image;
     private int Lane;
     public Boolean collisionPlant=false;
-    public int heat=5;
+    public int heat=0;
 
 
     public ImageView getImage() {
