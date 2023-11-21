@@ -9,9 +9,9 @@ public class DBConnection {
     public static ResultSet result;
 
     public static Connection getConnection() {
-        final String url = "jdbc:mysql://127.0.0.1:3306/dictionary";
+        final String url = "jdbc:mysql://localhost:3305/libraly";
         final String username = "root";
-        final String password = "135790";
+        final String password = "22021182";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

@@ -1,6 +1,7 @@
 package Controller;
 
 import database.DBConnection;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.sql.*;
@@ -19,6 +21,8 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
     @FXML
     private Button cancel;
+    @FXML
+    private AnchorPane SliderPane;
 
     @FXML
     private TextField idField;
@@ -64,14 +68,12 @@ public class LoginController implements Initializable {
 
     @FXML
     private BorderPane info;
-
     private Connection connection = DBConnection.getConnection();
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showPassField.setVisible(false);
-        info.setVisible(false);
         showPassInfo.setVisible(false);
         showRePassInfo.setVisible(false);
 
@@ -86,12 +88,17 @@ public class LoginController implements Initializable {
 
         signUp.setOnMouseClicked(event -> {
             clearData();
-            info.setVisible(true);
+            TranslateTransition anim = new TranslateTransition(Duration.seconds(0.5),info);
+            anim.setToX(440);
+            anim.play();
         });
 
         cancel.setOnMouseClicked(event -> {
             clearData();
-            info.setVisible(false);
+            TranslateTransition anim = new TranslateTransition(Duration.seconds(0.5), info);
+            anim.setToX(0);
+            anim.play();
+
         });
 
         ok.setOnMouseClicked(event -> {
@@ -136,9 +143,9 @@ public class LoginController implements Initializable {
             alert.setContentText("Mật khẩu không trùng khớp!");
             alert.showAndWait();
         } else if (passInfo.getText().equals(rePassInfo.getText())) {
-            String query1 = "SELECT * FROM dictionary.account WHERE name = '"
+            String query1 = "SELECT * FROM libraly.account WHERE name = '"
                     + nameInfo.getText() + "'";
-            String query2 = "SELECT * FROM dictionary.account WHERE " + "id = ? and pass = ?";
+            String query2 = "SELECT * FROM libraly.account WHERE " + "id = ? and pass = ?";
             try {
                 Statement statement = connection.createStatement();
                 ResultSet result1 = statement.executeQuery(query1);
@@ -155,7 +162,7 @@ public class LoginController implements Initializable {
                     alert.setContentText("Tài khoản đã tồn tại!");
                     alert.showAndWait();
                 } else {
-                    String query = "INSERT INTO dictionary.account (id, pass, name) VALUES (?, ?, ?)";
+                    String query = "INSERT INTO libraly.account (id, pass, name) VALUES (?, ?, ?)";
                     PreparedStatement prepStatement = connection.prepareStatement(query);
                     prepStatement.setString(1, idInfo.getText());
                     prepStatement.setString(2, passInfo.getText());
@@ -176,7 +183,7 @@ public class LoginController implements Initializable {
             alert.setContentText("Nhập chưa đủ dữ liệu!");
             alert.showAndWait();
         } else {
-            String query = "SELECT * FROM dictionary.account WHERE " + "id = ? and pass = ?";
+            String query = "SELECT * FROM libraly.account WHERE " + "id = ? and pass = ?";
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, idField.getText());

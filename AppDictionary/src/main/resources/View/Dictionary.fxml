@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.web.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="560.0" prefWidth="840.0" stylesheets="@../CSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DictionaryController">
+<AnchorPane prefHeight="560.0" prefWidth="840.0" styleClass="translateACP" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DictionaryController">
     <children>
-        <AnchorPane layoutX="6.0" prefHeight="560.0" prefWidth="300.0">
+        <AnchorPane layoutX="6.0" prefHeight="560.0" prefWidth="293.0" styleClass="listViewACP" stylesheets="@style.css">
             <children>
-                <ListView fx:id="listView" layoutY="160.0" prefHeight="400.0" prefWidth="240.0" />
+                <ListView fx:id="listView" layoutY="160.0" prefHeight="400.0" prefWidth="267.0" />
                 <AnchorPane layoutX="1.0" prefHeight="160.0" prefWidth="300.0">
                     <children>
-                        <TextField fx:id="searchField" layoutY="91.0" prefHeight="40.0" prefWidth="240.0" promptText="Nhập từ cần tìm kiếm" />
-                        <Button fx:id="search" layoutX="255.0" layoutY="96.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="45.0" text="S" />
-                        <Label alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="66.0" prefWidth="275.0" text="SEARCH">
+                  <HBox layoutY="91.0" prefHeight="41.0" prefWidth="267.0" styleClass="HBoxSearch" stylesheets="@style.css">
+                     <children>
+                              <TextField fx:id="searchField" prefHeight="40.0" prefWidth="225.0" promptText="Nhập từ cần tìm kiếm" />
+                              <Button fx:id="search" mnemonicParsing="false" prefHeight="31.0" prefWidth="45.0" styleClass="search" stylesheets="@style.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="SEARCH" size="20" styleClass="fontAwesomeIconView" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="66.0" prefWidth="267.0" styleClass="labelDiction" stylesheets="@style.css" text="SEARCH">
                             <font>
                                 <Font name="System Bold" size="30.0" />
                             </font>
@@ -27,21 +40,38 @@
                 </AnchorPane>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="330.0" prefHeight="560.0" prefWidth="510.0">
+        <AnchorPane layoutX="298.0" prefHeight="560.0" prefWidth="533.0">
             <children>
-                <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="66.0" prefWidth="502.0" text="DEFINITION">
+                <Label alignment="CENTER" layoutX="-17.0" layoutY="14.0" prefHeight="66.0" prefWidth="550.0" styleClass="labelDiction" stylesheets="@style.css" text="DEFINITION">
                     <font>
                         <Font name="System Bold" size="30.0" />
                     </font>
                 </Label>
-                <Button fx:id="delete" layoutX="416.0" layoutY="102.0" mnemonicParsing="false" text="Delete" />
-                <Button fx:id="edit" layoutX="343.0" layoutY="102.0" mnemonicParsing="false" text="Edit" />
-                <WebView fx:id="definitionView" layoutX="2.0" layoutY="156.0" prefHeight="400.0" prefWidth="502.0" />
-            <Button fx:id="add" layoutX="266.0" layoutY="102.0" mnemonicParsing="false" text="Add" />
-            <Button fx:id="note" layoutX="434.0" layoutY="22.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="51.0" />
-            <AnchorPane fx:id="editTab" layoutY="-4.0" prefHeight="560.0" prefWidth="510.0">
+                <Button fx:id="delete" layoutX="484.0" layoutY="102.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" stylesheets="@style.css">
+               <graphic>
+                  <FontAwesomeIconView glyphName="TRASH" size="20" styleClass="fontAwesomeIconView" />
+               </graphic></Button>
+                <Button fx:id="edit" layoutX="422.0" layoutY="102.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PENCIL" size="20" styleClass="fontAwesomeIconView" />
+               </graphic></Button>
+            <Button fx:id="add" layoutX="356.0" layoutY="102.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="20" styleClass="fontAwesomeIconView" />
+               </graphic></Button>
+            <Button fx:id="speaker" layoutX="292.0" layoutY="102.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" stylesheets="@style.css">
+               <graphic>
+                  <FontAwesomeIconView glyphName="VOLUME_UP" size="20" styleClass="fontAwesomeIconView" />
+               </graphic>
+            </Button>
+                <WebView fx:id="definitionView" layoutX="-17.0" layoutY="160.0" prefHeight="400.0" prefWidth="550.0" />
+            <Button fx:id="note" layoutX="476.0" layoutY="160.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" styleClass="noteImg" stylesheets="@style.css">
+               <graphic>
+                  <ImageView fx:id="noteImg" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic></Button>
+            <AnchorPane fx:id="editTab" layoutX="-21.0" prefHeight="560.0" prefWidth="550.0" visible="false">
                <children>
-                  <TextArea fx:id="editArea" layoutX="2.0" layoutY="156.0" prefHeight="400.0" prefWidth="502.0" promptText="Nhập định nghĩa mới">
+                  <TextArea fx:id="editArea" layoutY="160.0" prefHeight="400.0" prefWidth="555.0" promptText="Nhập định nghĩa mới" stylesheets="@style.css">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -49,22 +79,22 @@
                         <Insets right="10.0" />
                      </opaqueInsets>
                   </TextArea>
-                  <Button fx:id="save" layoutX="329.0" layoutY="483.0" mnemonicParsing="false" text="Save" />
-                  <Button fx:id="cancel" layoutX="410.0" layoutY="483.0" mnemonicParsing="false" text="Cancel" />
+                  <Button fx:id="save" layoutX="388.0" layoutY="508.0" mnemonicParsing="false" styleClass="note" text="Save" />
+                  <Button fx:id="cancel" layoutX="464.0" layoutY="508.0" mnemonicParsing="false" styleClass="note" text="Cancel" />
                </children>
             </AnchorPane>
             </children>
         </AnchorPane>
-      <BorderPane fx:id="addWord" layoutX="105.0" layoutY="36.0" prefHeight="488.0" prefWidth="630.0" styleClass="objectDetail">
+      <BorderPane fx:id="addWord" layoutX="105.0" layoutY="36.0" prefHeight="488.0" prefWidth="630.0" styleClass="objectDetail" stylesheets="@style.css" visible="false">
          <top>
-            <Label alignment="CENTER" prefHeight="52.0" prefWidth="630.0" style="-fx-background-color: #00FFFF;" text="WORD DETAIL" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" prefHeight="52.0" prefWidth="630.0" style="-fx-background-color: #5920D4; -fx-text-fill: #FFFFFF;" text="WORD DETAIL" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </top>
          <center>
-            <AnchorPane prefHeight="421.0" prefWidth="630.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="421.0" prefWidth="624.0" style="-fx-background-color: #B88A97;" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="eng" layoutX="64.0" layoutY="37.0" prefHeight="40.0" prefWidth="502.0" promptText="Nhập từ" />
                   <TextArea fx:id="def" layoutX="64.0" layoutY="97.0" prefHeight="294.0" prefWidth="502.0" promptText="Nhập định nghĩa" />
@@ -72,10 +102,10 @@
             </AnchorPane>
          </center>
          <bottom>
-            <AnchorPane prefHeight="15.0" prefWidth="630.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="37.0" prefWidth="620.0" style="-fx-background-color: #B88A97;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="canc" layoutX="546.0" mnemonicParsing="false" text="Cancel" />
-                  <Button fx:id="confirm" layoutX="443.0" mnemonicParsing="false" text="Confirm" />
+                  <Button fx:id="canc" layoutX="546.0" layoutY="6.0" mnemonicParsing="false" text="Cancel" />
+                  <Button fx:id="confirm" layoutX="448.0" layoutY="6.0" mnemonicParsing="false" text="Confirm" />
                </children>
             </AnchorPane>
          </bottom>

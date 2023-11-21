@@ -40,7 +40,9 @@ import java.net.URL;
 import java.util.*;
 
 public class gameController implements Initializable {
-    private ParallelTransition combinedTransition;
+    @FXML
+    private Label lblMes;
+    public static ParallelTransition combinedTransition;
     public static GameState state = GameState.playGame;
     private DataPlant seedBank = new DataPlant();
     @FXML
@@ -51,9 +53,14 @@ public class gameController implements Initializable {
     private GridPane lawn_grid;
     @FXML
     private VBox questionBox;
+    @FXML
+    private Label Heart;
+    @FXML
+    private ImageView pather;
+    private int heath;
     private static int level = 8;
     public static int Sun = 250;
-    public static boolean Shovel=false;
+    public static boolean Shovel = false;
     public static final int LANE1 = 10;
     public static final int LANE2 = 70;
     public static final int LANE3 = 130;
@@ -102,8 +109,6 @@ public class gameController implements Initializable {
     private int currentQuestionIndex = 0;
 
 
-
-
     public void ShowData() {
         PausePane.setVisible(true);
         PausePane.setViewOrder(-2);
@@ -135,31 +140,35 @@ public class gameController implements Initializable {
     public void CloseTable() {
         table.getChildren().removeAll();
         PausePane.setVisible(false);
+        showQuestion();
+        questionBox.setVisible(true);
 
     }
-    public void ShovelClick(){
-        Shovel=true;
-        val=-1;
+
+    public void ShovelClick() {
+        Shovel = true;
+        val = -1;
     }
+
     public static void UpdateSunCount(double value) {
         Sun += value;
-        UpdateSun=true;
+        UpdateSun = true;
     }
 
     public void showSun() {
-        if(!UpdateSun){
+        if (!UpdateSun) {
             return;
         }
         SunLabel.setText(Integer.toString(Sun));
-        UpdateSun=false;
+        UpdateSun = false;
     }
 
     public void AddPlant(Card iterm, int row, int col, Point center) {
         if (Sun < iterm.getPrice()) {
             return;
         }
-        Sun-=iterm.getPrice();
-        UpdateSun=true;
+        Sun -= iterm.getPrice();
+        UpdateSun = true;
         switch (iterm.getPlantform()) {
             case pea:
                 Bullet bullet = new Bullet(iterm.getDamge(), iterm.getSpeed(), row + 1, GameRoot, center, iterm.getBulletname(), 20, 20);
@@ -249,7 +258,7 @@ public class gameController implements Initializable {
     }
 
     public void SpawnZombie() {
-        if (ZombieList.size() != 0||PausePane.isVisible()) {
+        if (ZombieList.size() != 0 || PausePane.isVisible()) {
             return;
         }
         Random random = new Random();
@@ -259,8 +268,11 @@ public class gameController implements Initializable {
 
         Point center = new Point(700, 700);
         Timeline SpawnTime = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            int indexZombieName=level<=11?random.nextInt(level/3+1):random.nextInt(4);
-            ZombieData tmp=zombie.Zombie.get(indexZombieName);
+            if (state != GameState.playGame) {
+                return;
+            }
+            int indexZombieName = level <= 11 ? random.nextInt(level / 3 + 1) : random.nextInt(4);
+            ZombieData tmp = zombie.Zombie.get(indexZombieName);
             int Lane = random.nextInt(4);
             switch (Lane) {
                 case 0:
@@ -289,7 +301,7 @@ public class gameController implements Initializable {
                     break;
                 case 3:
                     center.setPointY(LANE4);
-                    Basic_Zombie newZom4= new Basic_Zombie(tmp.getSpeed(), tmp.getName()
+                    Basic_Zombie newZom4 = new Basic_Zombie(tmp.getSpeed(), tmp.getName()
                             , center, Lane + 1,
                             tmp.getHp(), tmp.getDamge(), 75, 75,
                             GameRoot);
@@ -404,63 +416,66 @@ public class gameController implements Initializable {
         lawnMovers.add(newLawnMower3);
         lawnMovers.add(newLawnMower4);
         lawnMovers.add(newLawnMower5);
-        for (int i = 0; i <lawnMovers.size();i++) {
+        for (int i = 0; i < lawnMovers.size(); i++) {
             GameRoot.getChildren().add(lawnMovers.get(i).getImage());
         }
     }
-    public void Replay(){
+
+    public void Replay() {
+        lblMes.setText("");
+        pather.setVisible(true);
+        heath = 5;
+        Heart.setText(Integer.toString(heath));
         EndPane.setVisible(false);
         questionBox.setVisible(true);
         GameRoot.setVisible(true);
         imageView.setImage(new Image("/asset/Game/Lawn.png"));
         imageView.setFitWidth(840);
         imageView.setFitHeight(400);
-        state=GameState.playGame;
+        state = GameState.playGame;
+        questionBox.setVisible(false);
+        UpdateSun = true;
+        Sun = 250;
+        level = 0;
 
-        Sun=150;
-        level=0;
-
-        for (int i = 0; i <lawnMovers.size(); i++) {
+        for (int i = 0; i < lawnMovers.size(); i++) {
             lawnMovers.get(i).getImage().setLayoutX(100);
             lawnMovers.get(i).setOnAction(false);
             lawnMovers.get(i).UpdateAnimation();
 
         }
-
+        showSun();
         PausePane.setVisible(true);
-        // Bắt đầu lại ParallelTransition
         combinedTransition.play();
-
     }
+
     public void pause() {
         questionBox.setVisible(false);
         if (combinedTransition != null) {
             combinedTransition.stop();
         }
-        for (int i=0;i<ZombieList.size();i++) {
+        for (int i = 0; i < ZombieList.size(); i++) {
             ZombieList.get(i).getImage().setVisible(false);
         }
         ZombieList.clear();
-        for (int i=0;i<listPlant.size();i++) {
+        for (int i = 0; i < listPlant.size(); i++) {
             listPlant.get(i).Reset();
         }
         listPlant.clear();
         plantIterm.clear();
-        System.out.println(plantIterm.size() );
+        System.out.println(plantIterm.size());
 
-        for (int i=0;i<spike.size();i++) {
+        for (int i = 0; i < spike.size(); i++) {
             spike.get(i).getImg().setVisible(false);
         }
         spike.clear();
         BoxPlant.getChildren().clear();
     }
+
     public void GamePlay() {
+        pather.setVisible(true);
         showSun();
-        Media BackGround = new Media(getClass().getResource("/asset/Sound/bgmfight.mp3").toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(BackGround);
-        mediaPlayer.setAutoPlay(true);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        MediaView view = new MediaView(mediaPlayer);
+        questionBox.setVisible(false);
         UpdateSpike.setCycleCount(Animation.INDEFINITE);
         UpdateLawnMover.setCycleCount(Animation.INDEFINITE);
         updatePlant.setCycleCount(Animation.INDEFINITE);
@@ -490,16 +505,18 @@ public class gameController implements Initializable {
     }
 
     public void GameEnd() {
-        if(state==GameState.playGame){
+
+        if (state == GameState.playGame) {
             return;
         }
         pause();
-        if(state==GameState.lostGame){
+        pather.setVisible(false);
+        if (state == GameState.lostGame) {
 
-            imageView.setImage(new Image("/asset/Game/GameOver.jpg"));
-            imageView.setFitWidth(1000);
-            imageView.setFitHeight(700);
-        } else if (state==GameState.winGame) {
+            imageView.setImage(new Image("/asset/Game/GameOver.png"));
+            imageView.setFitWidth(840);
+            imageView.setFitHeight(560);
+        } else if (state == GameState.winGame) {
             imageView.setImage(new Image("/asset/Game/WinGame.jpg"));
         }
         EndPane.setVisible(true);
@@ -516,7 +533,8 @@ public class gameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        heath = 5;
+        Heart.setText(Integer.toString(heath));
         level = 0;
         listPlant.clear();
         ZombieList.clear();
@@ -528,9 +546,9 @@ public class gameController implements Initializable {
                 Thread.sleep(3600); // Tạm dừng luồng này trong 2 giây
                 // Code tiếp theo sau khi tạm dừng
                 imageView.setImage(new Image("/asset/Game/cg18.png"));
-                imageView.setOnMouseClicked(event->{
+                imageView.setOnMouseClicked(event -> {
                     GamePlay();
-                    showQuestion();
+
                 });
 
             } catch (InterruptedException e) {
@@ -549,23 +567,35 @@ public class gameController implements Initializable {
     void checkYourAnswer(ActionEvent event) {
         Question currentQuestion = questions.get(currentQuestionIndex);
         RadioButton selectedRadioButton = (RadioButton) Choice.getSelectedToggle();
-        String selectedAnswer = selectedRadioButton.getText();
-
-        if (selectedAnswer.equals(currentQuestion.getCorrectAnswer())) {
-            UpdateSunCount(50);
-            UpdateSun=true;
-            showSun();
-            nextAnswer(event);
+        if (!rdoA.isSelected() && !rdoB.isSelected() && !rdoC.isSelected()) {
+            lblMes.setText("Please answer!");
         } else {
-            System.out.println("Incorrect!");
-            nextAnswer(event);
+            String selectedAnswer = selectedRadioButton.getText();
+            if (selectedAnswer.equals(currentQuestion.getCorrectAnswer())) {
+                UpdateSunCount(50);
+                UpdateSun = true;
+                showSun();
+                lblMes.setText("Correct!");
+                nextAnswer(event);
+            } else {
+                heath--;
+                lblMes.setText("Incorrect!");
+                if (heath <= 0) {
+                    state = GameState.lostGame;
+                    heath = 0;
+                } else {
+                    nextAnswer(event);
+
+                }
+                Heart.setText(Integer.toString(heath));
+            }
         }
     }
 
     @FXML
     void nextAnswer(ActionEvent event) {
         Random random = new Random();
-        currentQuestionIndex = random.nextInt(14);
+        currentQuestionIndex = random.nextInt(74);
 
         if (currentQuestionIndex < questions.size()) {
             showQuestion();
@@ -573,6 +603,7 @@ public class gameController implements Initializable {
             System.out.println("End of questions.");
         }
     }
+
     private void showQuestion() {
         Question currentQuestion = questions.get(currentQuestionIndex);
 

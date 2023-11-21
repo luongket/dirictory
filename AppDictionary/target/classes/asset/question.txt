@@ -58,3 +58,239 @@
 +Is there
 -There is
 -Is
+@_____ are very happy with _____ new dog.
+-We / us
++We / our
+-Us / our
+@Do you have ______ umbrella?
++an
+-the
+--
+@These are _____.
++my favourite shoes.
+-my favourites shoes.
+-my shoes favourite.
+@He _____ with his parents, he lives with his sister.
+-doesn't lives
+-don't lives
++doesn't live
+@I go to the gym ___ Tuesdays and Thursdays.
+-at
+-in
++on
+@_____ on weekends?
++Do you work
+-Are you working
+-Are you work
+@When _____?
++did she arrive
+-she arrived
+-did she arrived
+@She _____ French, but she can speak German.
+-can't to speak
++can't speak
+-doesn't can speak
+@I _____ travel around Europe next summer.
+-like to
+-would like
++'d like to
+@_____ watch this film. It's horrible.
+-Let's don't
++Don't
+-You don't
+@I needed help and he offered _____ me.
+-to helped
++to help
+-helping
+@There aren't _____ options.
++many
+-much
+-a lot
+@_____'s important to do exercise regularly.
+-There
+--
++It
+@There were very dark clouds _____ us.
+-under
+-beside
++above
+@My sister's school is ____ than my school.
+-more far
+-farer
++further
+@Look at _____ men over there. Do you recognise them?
+-that
++those
+-these
+@These cakes ____
+-are nices.
+-smell nicely.
++smell nice.
+@Where _____
++does your sister work?
+-works your sister?
+-does your sister works?
+@Which sentence is correct?
+-Do you go to bed early usually?
+-Do you go to bed usually early?
++Do you usually go to bed early?
+@I love _____
++your brother's new look.
+-the new look of your brother.
+-the new look's your brother.
+@Please, be quiet. I ___ TV.
+-watch
+-watching
++'m watching
+@_____ at the office this morning?
+-Did you were
++Were you
+-Was you
+@I forgot _____ Jenny. I need _____ her now.
++to call / to call
+-calling / to call
+-to call / calling
+@When I was a child, I _____ a bike.
+-hadn't
++didn't have
+-hadn't got
+@There weren't _____ people in the streets.
+-a
+-some
++any
+@_____ any problems during the event?
++Were there
+-Was there
+-There were
+@A: _____ to the cinema this evening? B: I can't, sorry. I'm afraid I have to work late.The peregrine falcon is _____
+-the fastest animal of the world.
+-the most fast animal of the world.
++the fastest animal in the world.
+@A: What _____ watch tonight? B: I don't know. Maybe a film.
+-you're going to
+-do you
++are you going to
+@That is ___ very expensive painting.
++a
+-the
+--
+@"_____ a student?" "Yes, I am."
+-You are
++Are you
+-Is he
+@_____ is a wonderful singer. _____ music is the best!
+-He / Her
+-She / She's
++She / Her
+@My sister _____ a lot.
++doesn't travel
+-don't travels
+-doesn't travels
+@Your keys are _____ the table.
+-at
+-in
++on
+@"What _____ you watching?" "A football match."
+-do
++are
+-is
+@"What do you do?" "I'm _____."
+-checking my emails
++a nurse
+-from Boston
+@_____ go there. It's very dangerous.
+-You don't
++Don't
+-Let's don't
+@What time _____?
+-Laura arrived
++did Laura arrive
+-did Laura arrived
+@"_____ like some tea?" "Yes, please."
+-Do you
+-You
++Would you
+@We don't have _____ sugar.
+-a
++any
+-some
+@_____ was a very nice painting on the wall.
++There
+-It
+-–
+@We don't have _____ time.
+-many
+-a lot
++much
+@_____ see your friends this evening?
++Are you going to
+-Are you going
+-Are you
+@She sings _____. She has a _____ voice.
++beautifully / nice
+-beautifully / nicely
+-beautiful / nicely
+@He takes _____.
++his son to football practice every day.
+-to football practice his son every day.
+-every day his son to football practice.
+@This is _____ apple.
+-a
++an
+-the
+@That girl is Sarah. _____ is _____ sister.
+-She ... mine
+-Her ... my
++She ... my
+@_____ in bed at 10pm.
++My wife is never
+-My wife never is
+-Never my wife is
+@I like to visit museums ______ art galleries when I travel.
+-but
+-so
++or
+@Peter's house is bigger _____ mine.
++than
+-that
+-as
+@She _____ the number on a piece of paper.
+-write
++wrote
+-writed
+@"_____ book is this?" "It's Mike's"
+-What
+-Who
++Whose
+@What time _____ get up at weekends?
+-she
+-is she
++does she
+@_____ are my cousins, Jack and Ellen.
+-This
+-That
++These
+@Are _____?
+-new your glasses
++your glasses new
+-your glasses news
+@Some people say that _____ chocolate is good for you.
+-the
+-a
++–
+@She can _____ the guitar.
++play
+-plays
+-to play
+@It's raining outside. You need _____ an umbrella.
++to bring
+-bringing
+-bring
+@They _____ not at home when I called.
+-was
++were
+-did
+@I _____ be at home at 7.
+-will no
++won't
+-will not to

@@ -7,16 +7,21 @@ import database.DictionaryManagement;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DictionaryController implements Initializable {
+
+    @FXML
+    private Button speaker;
 
     @FXML
     private TextField searchField;
@@ -69,6 +74,9 @@ public class DictionaryController implements Initializable {
     @FXML
     private Button note;
 
+    @FXML
+    private ImageView noteImg;
+
     private ArrayList<Word> wordList = Item.getWordList();
     private ArrayList<Word> savedList = Item.getSavedList();
     @Override
@@ -86,24 +94,24 @@ public class DictionaryController implements Initializable {
             note.setVisible(true);
             int k = Item.binarySearch(savedList, selectedWord);
             if (k == -1) {
-                note.setText("Note");
+                noteImg.setImage(new Image("asset/note.png"));
             } else {
-                note.setText("Noted");
+                noteImg.setImage(new Image("asset/noted.png"));
             }
             note.setOnMouseClicked(e -> {
                 int i = Item.binarySearch(savedList, selectedWord);
                 if (i == -1) {
                     int j = Item.binarySearch(wordList, selectedWord);
                     Word word = wordList.get(j);
-                    DictionaryManagement.insert("dictionary.saveword", word);
+                    DictionaryManagement.insert("libraly.saveword", word);
                     savedList.add(word);
                     Item.sort(savedList, 0, savedList.size() - 1);
-                    note.setText("Noted");
+                    noteImg.setImage(new Image("asset/noted.png"));
                 } else {
                     int j = Item.binarySearch(savedList, selectedWord);
-                    DictionaryManagement.delete("dictionary.saveword", selectedWord);
+                    DictionaryManagement.delete("libraly.saveword", selectedWord);
                     savedList.remove(j);
-                    note.setText("Note");
+                    noteImg.setImage(new Image("asset/note.png"));
                 }
             });
         });
@@ -147,6 +155,9 @@ public class DictionaryController implements Initializable {
         confirm.setOnMouseClicked(event -> {
             Confirm();
         });
+        speaker.setOnMouseClicked(event -> {
+            Speak();
+        });
     }
 
     private void updateListView() {
@@ -187,7 +198,7 @@ public class DictionaryController implements Initializable {
 
     private void Delete(String selectedWord) {
         if (selectedWord != null) {
-            DictionaryManagement.delete("dictionary.dictionary", selectedWord);
+            DictionaryManagement.delete("libraly.dictionary", selectedWord);
             int selectedId = listView.getSelectionModel().getSelectedIndex();
             int newSelectedId = (selectedId == listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
             int i = Item.binarySearch(wordList, selectedWord);
@@ -245,11 +256,16 @@ public class DictionaryController implements Initializable {
             Word word = new Word(engWord, defWord);
             wordList.add(word);
             Item.sort(wordList, 0, wordList.size() - 1);
-            DictionaryManagement.insert("dictionary.dictionary", word);
+            DictionaryManagement.insert("libraly.dictionary", word);
             addWord.setVisible(false);
             eng.clear();
             def.clear();
         }
     }
-
+    public void Speak() {
+        String selectedWord = listView.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            DictionaryManagement.textToSpeech(selectedWord);
+        }
+    }
 }

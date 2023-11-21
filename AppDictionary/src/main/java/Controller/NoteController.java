@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
@@ -22,7 +23,7 @@ public class NoteController implements Initializable {
     private Button cancel;
 
     @FXML
-    private AnchorPane addWord;
+    private BorderPane addWord;
 
     @FXML
     private TextArea editArea;
@@ -44,6 +45,9 @@ public class NoteController implements Initializable {
 
     @FXML
     private Button confirm;
+
+    @FXML
+    private Button speaker;
 
     @FXML
     private Button search;
@@ -118,6 +122,9 @@ public class NoteController implements Initializable {
         confirm.setOnMouseClicked(event -> {
             Confirm();
         });
+        speaker.setOnMouseClicked(event -> {
+            Speak();
+        });
     }
 
     private void updateListView() {
@@ -158,7 +165,7 @@ public class NoteController implements Initializable {
 
     private void Delete(String selectedWord) {
         if (selectedWord != null) {
-            DictionaryManagement.delete("dictionary.saveword", selectedWord);
+            DictionaryManagement.delete("libraly.saveword", selectedWord);
             int selectedId = listView.getSelectionModel().getSelectedIndex();
             int newSelectedId = (selectedId == listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
             int i = Item.binarySearch(savedList, selectedWord);
@@ -216,11 +223,18 @@ public class NoteController implements Initializable {
             Word word = new Word(engWord, defWord);
             savedList.add(word);
             Item.sort(savedList, 0, savedList.size() - 1);
-            DictionaryManagement.insert("dictionary.saveword", word);
+            DictionaryManagement.insert("libraly.saveword", word);
             updateListView();
             addWord.setVisible(false);
             eng.clear();
             def.clear();
+        }
+    }
+
+    public void Speak() {
+        String selectedWord = listView.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            DictionaryManagement.textToSpeech(selectedWord);
         }
     }
 }

@@ -1,0 +1,115 @@
+/*--------translate View----------*/
+AnchorPane.translateACP {
+    -fx-background-image: url("/asset/images.png");
+    -fx-background-size: contain;
+}
+VBox.TranslateVBox {
+    -fx-background-radius: 5px;
+    -fx-border-color: #001452;
+    -fx-border-radius: 5px;
+    -fx-border-width: 3px;
+}
+ComboBox.ComboBox {
+    -fx-background-color: #FFFFFF;
+}
+.fontAwesomeIconView:hover {
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+.button {
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.2) , 1, 0.3 , 2 , 4);
+}
+.button:hover {
+    -fx-cursor: hand;
+}
+.button:pressed {
+    -fx-background-color: #7A7A7A;
+}
+VBox.GameVbox {
+    -fx-padding: 0px 10px;
+    -fx-background-color: #A1FA4F;
+    -fx-background-radius: 5px;
+    -fx-spacing: 10;
+    -fx-border-color: #4A290D;
+    -fx-border-width: 16px;
+}
+#rdoA, #rdoB, #rdoC {
+    -fx-text-fill: #000000;
+    -fx-font-size: 12;
+}
+#lblQuestion {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15;
+}
+Text.textGame {
+    -fx-font-size: 15;
+    -fx-fill: #000000;
+}
+HBox.HBoxGBut {
+    -fx-spacing: 40;
+    -fx-alignment: CENTER;
+}
+HBox.HBoxGQuestion {
+    -fx-spacing: 10;
+    -fx-padding: 5px -5px;
+}
+HBox.HBoxSearch {
+    -fx-background-color: #636363;
+    -fx-padding: 5;
+    -fx-spacing: 10;
+    -fx-background-radius: 5px;
+}
+Button.search {
+     -fx-background-color: #FFFFFF;
+     -fx-font-size: 15;
+}
+.objectDetail {
+    -fx-background-color: #DDDDDD;
+    -fx-border-color: #000000;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 3px;
+}
+#confirm, #canc {
+    -fx-background-radius: 50px;
+}
+.toggle-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.toggle-button:hover .imageView {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.noteImg:hover {
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+.toggle-button:selected {
+    -fx-border-color: #000;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 0 4px;
+}
+.labelDiction {
+    -fx-background-color: #530DAD;
+    -fx-text-fill: #FFFFFF;
+}
+.note {
+    -fx-background-radius: 50px;
+}
+#lblMes {
+    -fx-font-size: 15;
+    -fx-text-fill: #FF0000;
+}
+.playGame {
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+}
+.playGame:hover{
+    -fx-cursor: hand;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-text-fill: white;
+}

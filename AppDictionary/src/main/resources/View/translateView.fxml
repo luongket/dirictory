@@ -12,14 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="Language" prefHeight="560.0" prefWidth="840.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
+<AnchorPane fx:id="Language" prefHeight="560.0" prefWidth="840.0" styleClass="translateACP" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="780.0" style="-fx-background-color: #FFFDDD;" translateX="30.0" translateY="30.0">
+      <VBox prefHeight="200.0" prefWidth="780.0" style="-fx-background-color: #FFFDDD;" styleClass="TranslateVBox" stylesheets="@style.css" translateX="30.0" translateY="30.0">
          <children>
-            <HBox prefHeight="50.0" prefWidth="200.0">
+            <HBox prefHeight="50.0" prefWidth="200.0" styleClass="translateHBox" stylesheets="@style.css">
                <children>
-                  <ComboBox fx:id="BoxLanguageFrom" onAction="#SellectLangFrom" prefHeight="30.0" prefWidth="200.0" promptText="Ngôn Ngữ Dịch">
+                  <ComboBox fx:id="BoxLanguageFrom" onAction="#SellectLangFrom" prefHeight="30.0" prefWidth="200.0" promptText="Ngôn ngữ dịch" styleClass="ComboBox" stylesheets="@style.css">
                      <HBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </HBox.margin>
@@ -30,7 +29,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </ComboBox>
-                  <Button mnemonicParsing="false" onAction="#playArea1" prefHeight="30.0" prefWidth="50.0">
+                  <Button mnemonicParsing="false" onAction="#playArea1" prefHeight="30.0" prefWidth="50.0" styleClass="playArea" stylesheets="@style.css">
                      <HBox.margin>
                         <Insets bottom="5.0" left="500.0" top="5.0" />
                      </HBox.margin>
@@ -43,8 +42,11 @@
                      </graphic>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
             </HBox>
-            <TextArea fx:id="area1" prefHeight="200.0" prefWidth="200.0" promptText="nhập nội dung tìm kiếm">
+            <TextArea fx:id="area1" prefHeight="200.0" prefWidth="200.0" promptText="Nhập kết quả tìm kiếm" stylesheets="@style.css">
                <font>
                   <Font size="18.0" />
                </font></TextArea>
@@ -62,7 +64,7 @@
                   <Insets top="10.0" />
                </HBox.margin>
                <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" styleClass="tranBut">
                      <image>
                         <Image url="@../asset/swap.png" />
                      </image>
@@ -79,12 +81,12 @@
             </TextField>
          </children>
       </HBox>
-      <Button layoutX="641.0" layoutY="255.0" mnemonicParsing="false" onAction="#translate" prefHeight="40.0" prefWidth="100.0" text="Dịch" />
-      <VBox layoutX="30.0" layoutY="325.0" prefHeight="200.0" prefWidth="780.0" style="-fx-background-color: #FFFDDD;">
+      <Button layoutX="641.0" layoutY="250.0" mnemonicParsing="false" onAction="#translate" prefHeight="40.0" prefWidth="100.0" styleClass="translate" stylesheets="@style.css" text="Dịch" />
+      <VBox layoutX="30.0" layoutY="327.0" prefHeight="200.0" prefWidth="780.0" style="-fx-background-color: #FFFDDD;" styleClass="TranslateVBox" stylesheets="@style.css">
          <children>
-            <HBox prefHeight="50.0" prefWidth="200.0">
+            <HBox prefHeight="50.0" prefWidth="200.0" styleClass="translateHbox" stylesheets="@style.css">
                <children>
-                  <ComboBox fx:id="BoxLanguageTo" onAction="#SellectLangTo" prefHeight="30.0" prefWidth="200.0" promptText="Ngôn Ngữ Dịch">
+                  <ComboBox fx:id="BoxLanguageTo" onAction="#SellectLangTo" prefHeight="30.0" prefWidth="200.0" promptText="Ngôn Ngữ Dịch" styleClass="ComboBox" stylesheets="@style.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -92,10 +94,10 @@
                         <Insets left="50.0" />
                      </padding>
                      <HBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="10.0" top="5.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <Button mnemonicParsing="false" onAction="#playArea2" prefHeight="30.0" prefWidth="50.0">
+                  <Button mnemonicParsing="false" onAction="#playArea2" prefHeight="30.0" prefWidth="50.0" styleClass="playArea" stylesheets="@style.css">
                      <HBox.margin>
                         <Insets bottom="5.0" left="500.0" top="5.0" />
                      </HBox.margin>
@@ -109,7 +111,7 @@
                   </Button>
                </children>
             </HBox>
-            <TextArea fx:id="area2" prefHeight="200.0" prefWidth="200.0" promptText="kết quả tìm kiếm">
+            <TextArea fx:id="area2" prefHeight="200.0" prefWidth="200.0" promptText="Kết quả tìm kiếm" stylesheets="@style.css">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

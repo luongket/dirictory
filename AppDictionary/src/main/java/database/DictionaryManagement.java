@@ -1,7 +1,9 @@
 package database;
 
 
+import com.sun.speech.freetts.Voice;
 import Base.App.Word;
+import com.sun.speech.freetts.VoiceManager;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -72,5 +74,14 @@ public class DictionaryManagement {
 
         return wordList;
     }
-
+    public static void textToSpeech(String text) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            voice.speak(text);
+        } else {
+            throw new IllegalStateException("Cannot find voice: kevin16");
+        }
+    }
 }

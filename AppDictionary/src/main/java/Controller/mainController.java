@@ -1,6 +1,7 @@
 package Controller;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,7 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -20,22 +23,13 @@ import java.util.ResourceBundle;
 
 public class mainController implements Initializable {
     @FXML
-    private ImageView dictionary;
+    private ToggleButton dictionary;
 
     @FXML
-    private ImageView home;
+    private ToggleButton game;
 
     @FXML
-    private Label name;
-
-    @FXML
-    private Button signOut;
-
-    @FXML
-    private ImageView stadiaController;
-
-    @FXML
-    private ImageView note;
+    private ToggleButton home;
 
     @FXML
     private AnchorPane mainContent;
@@ -44,9 +38,18 @@ public class mainController implements Initializable {
     private ImageView menu;
 
     @FXML
+    private Label name;
+
+    @FXML
+    private ToggleButton note;
+
+    @FXML
+    private Button signOut;
+
+    @FXML
     private AnchorPane sliderNav;
 
-    private boolean flip = true;
+    private boolean flip = false;
 
     private void setMainContent(String path) {
         try {
@@ -57,7 +60,11 @@ public class mainController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if (gameController.combinedTransition != null) {
+            gameController.combinedTransition.stop();
+        }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,21 +74,21 @@ public class mainController implements Initializable {
             flip = !flip;
             TranslateTransition anim = new TranslateTransition(Duration.seconds(0.5), sliderNav);
             if (!flip) {
-                anim.setToX(-200);
+                anim.setToX(0);
                 anim.play();
             } else {
-                anim.setToX(0);
+                anim.setToX(224);
                 anim.play();
             }
         });
         mainContent.setOnMouseClicked(event -> {
             flip = false;
             TranslateTransition anim = new TranslateTransition(Duration.seconds(0.5), sliderNav);
-            anim.setToX(-200);
+            anim.setToX(0);
             anim.play();
         });
 
-        stadiaController.setOnMouseClicked(event -> {
+        game.setOnMouseClicked(event -> {
             showGameView();
         });
 
@@ -99,24 +106,40 @@ public class mainController implements Initializable {
         });
     }
 
+
     @FXML
     private void showGameView() {
         setMainContent("/View/Game.fxml");
+        clearButton();
+        game.setSelected(true);
     }
 
     @FXML
     private void showDictionary() {
         setMainContent("/View/Dictionary.fxml");
+        clearButton();
+        dictionary.setSelected(true);
     }
 
     @FXML
     private void showHome() {
         setMainContent("/View/translateView.fxml");
+        clearButton();
+        home.setSelected(true);
     }
 
     @FXML
     private void showNoteView() {
         setMainContent("/View/Note.fxml");
+        clearButton();
+        note.setSelected(true);
+    }
+
+    private void clearButton(){
+        home.setSelected(false);
+        dictionary.setSelected(false);
+        game.setSelected(false);
+        note.setSelected(false);
     }
 
     private void logOut() {
