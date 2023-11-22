@@ -46,14 +46,13 @@ group Báo Hồng
 ## Demo
 
 ## Future improvements
-1.Thêm nhiều tính năng học tập và giải trí.
-2.Tăng tính bảo mật.
-3.Thêm nhiều hiệu ứng, chuyển động mượt mà.
-4.Cải thiện thuật toán.
+1. Thêm nhiều tính năng học tập và giải trí.
+2. Tăng tính bảo mật.
+3. Thêm nhiều hiệu ứng, chuyển động mượt mà.
+4. Cải thiện thuật toán.
 
 ## Contributing
-  Yêu cầu pull đều được chào đón. Đối với những thay đổi lớn, vui lòng mở một issue trước để thảo luận về những gì bạn muốn thay đổi.
-
+   Các thành viên trong nhóm đều đóng gọp một cách có trách nhiệm với từng nhiệm vụ được phân chia.
 ## Notes
   Ứng dụng này được viết cho mục đích giáo dục.
 
