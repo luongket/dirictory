@@ -1,9 +1,9 @@
 # Application to support learning English using Java
 ## Author
-Group 1
-* Nguyen Van Thanh - 22020001
-* Nguyen Van Truong - 22020002
-* Nguyen Van Dong - 22020003
+group Báo Hồng
+* Nguyễn Xuân Khải 22021191
+* Đinh Hoàng Nam 22021189
+* Lương Văn Kết 22021182
 ## Description
 Ứng dụng được thiết kế để hỗ trợ việc học tiếng Anh. Ứng dụng được thiết kế bằng ngôn ngữ Java và sử dụng thư viện Javafx và áp dụng mô hình MVC. Ứng dụng có các chức năng như sau:
 - Chức năng dịch và đọc văn bản theo các ngôn ngữ dựa theo api của Google Translate
