@@ -177,7 +177,6 @@
                            </HBox.margin>
                         </Label>
                              <Button mnemonicParsing="false" onAction="#checkYourAnswer" styleClass="note" text="Check You Answer" />
-                             <Button mnemonicParsing="false" onAction="#nextAnswer" styleClass="note" text="Next Answer" />
                          </children>
                      <VBox.margin>
                         <Insets />
