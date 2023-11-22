@@ -44,6 +44,7 @@ group Báo Hồng
    - Mỗi hàng sẽ có 1 máy cắt cỏ có thể tiêu diệt các zombie trên hàng đó (Kích hoạt khi bị zombie tiếp cận)
    - Khi đã hết máy cắt cỏ, zombie sẽ tiếp cận ngôi nhà và bạn sẽ thua cuộc, chơi lại nếu muốn.
 ## Demo
+https://drive.google.com/file/d/1he5mgGk8RIWQq19lHxXiywkdJiK3QPfX/view?usp=sharing
 
 ## Future improvements
 1. Thêm nhiều tính năng học tập và giải trí.
