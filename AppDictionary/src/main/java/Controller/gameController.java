@@ -422,6 +422,7 @@ public class gameController implements Initializable {
     }
 
     public void Replay() {
+        pause();
         lblMes.setText("");
         pather.setVisible(true);
         heath = 5;
