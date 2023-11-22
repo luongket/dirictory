@@ -11,6 +11,7 @@ Group 1
 - Chế độ lưu từ giúp việc học dễ dàng hơn
 - Tính năng trò chơi giúp việc học tiếng Anh trở nên vui nhộn và lý thú
 ## UML diagram
+<img width="855" alt="image" src="https://github.com/luongket/dirictory/assets/144676533/30d4bcca-3120-4b53-9db7-ee0ed4f6b8c5">
 ## Installation
 ![0](https://github.com/luongket/dirictory/assets/132531766/d47171ce-5217-441d-b806-527b5ee8a463)
 * Coppy HTTPs và sau đó clone project
