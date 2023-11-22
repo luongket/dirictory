@@ -61,7 +61,7 @@
             </ToggleButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="sliderNav" layoutX="-164.0" layoutY="42.0" prefHeight="560.0" prefWidth="164.0" style="-fx-background-color: #F353FF;" styleClass="signOut" stylesheets="@style.css" AnchorPane.bottomAnchor="1.3333333333333712" AnchorPane.topAnchor="42.0">
+      <AnchorPane fx:id="sliderNav" layoutX="-164.0" layoutY="42.0" prefHeight="560.0" prefWidth="164.0" style="-fx-background-color: #CCFFFF;" styleClass="signOut" stylesheets="@style.css" AnchorPane.bottomAnchor="1.3333333333333712" AnchorPane.topAnchor="42.0">
          <children>
             <HBox alignment="CENTER" layoutY="162.0" prefHeight="40.0" prefWidth="164.0" style="-fx-alignment: CENTER;">
                <children>
