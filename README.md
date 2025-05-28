@@ -53,7 +53,7 @@ https://drive.google.com/file/d/1he5mgGk8RIWQq19lHxXiywkdJiK3QPfX/view?usp=shari
 4. Cải thiện thuật toán.
 
 ## Contributing
-   Các thành viên trong nhóm đều đóng gọp một cách có trách nhiệm với từng nhiệm vụ được phân chia.
+   Các thành viên trong nhóm đều đóng góp một cách có trách nhiệm với từng nhiệm vụ được phân chia.
 ## Notes
   Ứng dụng này được viết cho mục đích giáo dục.
 
